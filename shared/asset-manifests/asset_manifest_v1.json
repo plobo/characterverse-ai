@@ -1,0 +1,141 @@
+{
+  "manifestVersion": "1.0",
+  "licences": [
+    {
+      "id": "lic_cv_original_v1",
+      "name": "CharacterVerse Original Work (team-created, procedural)",
+      "licenceUrl": "docs/ASSET_AND_MODEL_LICENSES.md#lic_cv_original_v1",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "redistribution": true,
+      "derivatives": true,
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-11-17",
+      "reviewer": "asset-review-board"
+    },
+    {
+      "id": "lic_pending_review",
+      "name": "Unreviewed third-party submission",
+      "licenceUrl": "docs/ASSET_AND_MODEL_LICENSES.md#lic_pending_review",
+      "commercialUse": false,
+      "attributionRequired": true,
+      "redistribution": false,
+      "derivatives": false,
+      "reviewStatus": "pending",
+      "reviewedAt": null,
+      "reviewer": null
+    }
+  ],
+  "categories": ["hero", "villain", "cartoon", "fantasy", "robot", "alien", "creature"],
+  "styles": ["stylized_cinematic", "toon_soft", "clay_matte", "neon_lowpoly"],
+  "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"],
+  "baseModels": [
+    {"id": "humanoid_base_01", "name": "Stride Humanoid", "rig": "humanoid_v1", "categories": ["hero", "villain", "fantasy", "alien"], "licenceId": "lic_cv_original_v1"},
+    {"id": "humanoid_toon_02", "name": "Bouncy Toon", "rig": "humanoid_v1", "categories": ["cartoon", "hero", "villain"], "licenceId": "lic_cv_original_v1"},
+    {"id": "critter_base_01", "name": "Pocket Critter", "rig": "critter_v1", "categories": ["cartoon", "creature", "fantasy"], "licenceId": "lic_cv_original_v1"},
+    {"id": "mech_base_01", "name": "Gearframe Bot", "rig": "mech_v1", "categories": ["robot", "villain", "hero"], "licenceId": "lic_cv_original_v1"},
+    {"id": "alien_base_01", "name": "Orbling Alien", "rig": "humanoid_v1", "categories": ["alien", "cartoon"], "licenceId": "lic_cv_original_v1"},
+    {"id": "creature_base_01", "name": "Ridgeback Beast", "rig": "creature_v1", "categories": ["creature", "fantasy", "villain"], "licenceId": "lic_cv_original_v1"}
+  ],
+  "modules": [
+    {"id": "original_armor_shoulders_02", "name": "Arc Shoulder Plates", "slot": "shoulders", "rigs": ["humanoid_v1", "mech_v1"], "priority": 10, "licenceId": "lic_cv_original_v1"},
+    {"id": "leaf_cape_01", "name": "Leaf Cape", "slot": "back", "rigs": ["humanoid_v1", "critter_v1"], "priority": 20, "licenceId": "lic_cv_original_v1"},
+    {"id": "energy_bracers_03", "name": "Energy Bracers", "slot": "arms", "rigs": ["humanoid_v1", "mech_v1"], "priority": 30, "licenceId": "lic_cv_original_v1"},
+    {"id": "star_visor_01", "name": "Star Visor", "slot": "face", "rigs": ["humanoid_v1", "mech_v1", "critter_v1"], "priority": 15, "licenceId": "lic_cv_original_v1"},
+    {"id": "antenna_pair_01", "name": "Bobble Antennae", "slot": "head_top", "rigs": ["humanoid_v1", "mech_v1", "critter_v1", "creature_v1"], "priority": 40, "licenceId": "lic_cv_original_v1"},
+    {"id": "crystal_horns_01", "name": "Crystal Horns", "slot": "head_top", "rigs": ["humanoid_v1", "critter_v1", "creature_v1"], "priority": 25, "licenceId": "lic_cv_original_v1"},
+    {"id": "jet_pack_01", "name": "Puff Jet Pack", "slot": "back", "rigs": ["humanoid_v1", "mech_v1"], "priority": 35, "licenceId": "lic_cv_original_v1"},
+    {"id": "moth_wings_01", "name": "Moth Wings", "slot": "back", "rigs": ["humanoid_v1", "critter_v1", "creature_v1"], "priority": 45, "licenceId": "lic_cv_original_v1"},
+    {"id": "spike_tail_01", "name": "Spike Tail", "slot": "tail", "rigs": ["creature_v1", "critter_v1"], "priority": 50, "licenceId": "lic_cv_original_v1"},
+    {"id": "tread_boots_01", "name": "Tread Boots", "slot": "legs", "rigs": ["humanoid_v1", "mech_v1"], "priority": 55, "licenceId": "lic_cv_original_v1"},
+    {"id": "explorer_scarf_01", "name": "Explorer Scarf", "slot": "neck", "rigs": ["humanoid_v1", "critter_v1"], "priority": 60, "licenceId": "lic_cv_original_v1"},
+    {"id": "experimental_glow_tail_01", "name": "Glow Tail (unreviewed)", "slot": "tail", "rigs": ["creature_v1"], "priority": 99, "licenceId": "lic_pending_review"}
+  ],
+  "powers": [
+    {"id": "electricity", "name": "Electricity", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "effectColor": "#7FD8FF"},
+    {"id": "plant_growth", "name": "Plant Growth", "rigs": ["humanoid_v1", "critter_v1", "creature_v1"], "effectColor": "#6BCB77"},
+    {"id": "flight", "name": "Flight", "rigs": ["humanoid_v1", "mech_v1", "critter_v1"], "effectColor": "#FFFFFF"},
+    {"id": "ice", "name": "Ice", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "effectColor": "#BDEBFF"},
+    {"id": "fire_breath", "name": "Fire Breath", "rigs": ["creature_v1", "critter_v1"], "effectColor": "#FF7A3D"},
+    {"id": "super_strength", "name": "Super Strength", "rigs": ["humanoid_v1", "mech_v1", "creature_v1"], "effectColor": "#FFC857"},
+    {"id": "invisibility", "name": "Invisibility", "rigs": ["humanoid_v1", "critter_v1"], "effectColor": "#C9C9FF"},
+    {"id": "shape_shift", "name": "Shape Shift", "rigs": ["humanoid_v1", "creature_v1"], "effectColor": "#E58FFF"},
+    {"id": "force_field", "name": "Force Field", "rigs": ["humanoid_v1", "mech_v1"], "effectColor": "#8FF7E6"},
+    {"id": "time_slow", "name": "Time Slow", "rigs": ["humanoid_v1"], "effectColor": "#F2E8CF"},
+    {"id": "sonic_roar", "name": "Sonic Roar", "rigs": ["creature_v1", "critter_v1"], "effectColor": "#FFB3C1"},
+    {"id": "gadgetry", "name": "Gadgetry", "rigs": ["mech_v1", "humanoid_v1"], "effectColor": "#B8C0CC"}
+  ],
+  "personalityTraits": ["protective", "curious", "calm", "brave", "mischievous", "grumpy", "cheerful", "cunning", "loyal", "shy", "ambitious", "playful", "wise", "dramatic", "stubborn", "kind"],
+  "voiceProfiles": [
+    {"id": "voice_fictional_warm_01", "name": "Warm Narrator", "provider": "cv_tone_babble_v1", "baseHz": 180, "licenceId": "lic_cv_original_v1"},
+    {"id": "voice_fictional_bright_02", "name": "Bright Sidekick", "provider": "cv_tone_babble_v1", "baseHz": 320, "licenceId": "lic_cv_original_v1"},
+    {"id": "voice_fictional_deep_03", "name": "Deep Rumble", "provider": "cv_tone_babble_v1", "baseHz": 110, "licenceId": "lic_cv_original_v1"},
+    {"id": "voice_fictional_robotic_04", "name": "Circuit Chirp", "provider": "cv_tone_babble_v1", "baseHz": 240, "licenceId": "lic_cv_original_v1"},
+    {"id": "voice_fictional_squeaky_05", "name": "Squeaky Spark", "provider": "cv_tone_babble_v1", "baseHz": 440, "licenceId": "lic_cv_original_v1"}
+  ],
+  "animationClips": [
+    {"id": "idle", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "bob", "licenceId": "lic_cv_original_v1"},
+    {"id": "walk", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "stride", "licenceId": "lic_cv_original_v1"},
+    {"id": "run", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "dash", "licenceId": "lic_cv_original_v1"},
+    {"id": "jump", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "hop", "licenceId": "lic_cv_original_v1"},
+    {"id": "wave", "rigs": ["humanoid_v1", "mech_v1"], "motion": "sway", "licenceId": "lic_cv_original_v1"},
+    {"id": "point", "rigs": ["humanoid_v1", "mech_v1"], "motion": "lean", "licenceId": "lic_cv_original_v1"},
+    {"id": "clap", "rigs": ["humanoid_v1", "mech_v1"], "motion": "bob", "licenceId": "lic_cv_original_v1"},
+    {"id": "laugh", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "shake", "licenceId": "lic_cv_original_v1"},
+    {"id": "talk", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "nod", "licenceId": "lic_cv_original_v1"},
+    {"id": "listen", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "still", "licenceId": "lic_cv_original_v1"},
+    {"id": "dance_loop_01", "rigs": ["humanoid_v1", "critter_v1", "mech_v1"], "motion": "spin", "licenceId": "lic_cv_original_v1"},
+    {"id": "hover", "rigs": ["humanoid_v1", "critter_v1", "mech_v1"], "motion": "float", "licenceId": "lic_cv_original_v1"},
+    {"id": "fly", "rigs": ["humanoid_v1", "mech_v1"], "motion": "soar", "licenceId": "lic_cv_original_v1"},
+    {"id": "action_combo_01", "rigs": ["humanoid_v1", "mech_v1", "creature_v1"], "motion": "lunge", "licenceId": "lic_cv_original_v1"},
+    {"id": "hit_react", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "recoil", "licenceId": "lic_cv_original_v1"},
+    {"id": "fall", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "drop", "licenceId": "lic_cv_original_v1"},
+    {"id": "get_up", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "rise", "licenceId": "lic_cv_original_v1"},
+    {"id": "victory", "rigs": ["humanoid_v1", "critter_v1", "mech_v1", "creature_v1"], "motion": "hop", "licenceId": "lic_cv_original_v1"},
+    {"id": "creature_prowl", "rigs": ["creature_v1", "critter_v1"], "motion": "stride", "licenceId": "lic_cv_original_v1"}
+  ],
+  "environments": [
+    {"id": "env_sky_city_01", "name": "Sky Harbor", "skyTop": "#4A90D9", "skyBottom": "#BFE3FF", "ground": "#8FA3B8", "licenceId": "lic_cv_original_v1"},
+    {"id": "env_crystal_forest_01", "name": "Crystal Forest", "skyTop": "#2E3A59", "skyBottom": "#7B6CF6", "ground": "#3C6E57", "licenceId": "lic_cv_original_v1"},
+    {"id": "env_moon_base_01", "name": "Moonlight Outpost", "skyTop": "#0B0F2A", "skyBottom": "#2D2F5B", "ground": "#9A9AA8", "licenceId": "lic_cv_original_v1"},
+    {"id": "env_cozy_village_01", "name": "Cozy Village", "skyTop": "#FFB677", "skyBottom": "#FFE8C2", "ground": "#7FB069", "licenceId": "lic_cv_original_v1"},
+    {"id": "env_neon_alley_01", "name": "Neon Alley", "skyTop": "#1A0B2E", "skyBottom": "#5B1A6E", "ground": "#2B2B3A", "licenceId": "lic_cv_original_v1"}
+  ],
+  "cameraPresets": [
+    {"id": "cam_wide", "zoom": 0.8, "licenceId": "lic_cv_original_v1"},
+    {"id": "cam_medium", "zoom": 1.0, "licenceId": "lic_cv_original_v1"},
+    {"id": "cam_closeup", "zoom": 1.45, "licenceId": "lic_cv_original_v1"},
+    {"id": "cam_low_hero", "zoom": 1.15, "licenceId": "lic_cv_original_v1"},
+    {"id": "cam_orbit", "zoom": 0.95, "licenceId": "lic_cv_original_v1"}
+  ],
+  "lightingPresets": [
+    {"id": "light_daylight", "tint": "#FFFFFF", "licenceId": "lic_cv_original_v1"},
+    {"id": "light_sunset", "tint": "#FFD1A6", "licenceId": "lic_cv_original_v1"},
+    {"id": "light_night_neon", "tint": "#C7B8FF", "licenceId": "lic_cv_original_v1"}
+  ],
+  "soundEffects": [
+    {"id": "sfx_whoosh_01", "synth": "noise_sweep", "licenceId": "lic_cv_original_v1"},
+    {"id": "sfx_zap_01", "synth": "square_drop", "licenceId": "lic_cv_original_v1"},
+    {"id": "sfx_chime_01", "synth": "bell", "licenceId": "lic_cv_original_v1"},
+    {"id": "sfx_thud_01", "synth": "low_hit", "licenceId": "lic_cv_original_v1"},
+    {"id": "sfx_pop_01", "synth": "blip", "licenceId": "lic_cv_original_v1"}
+  ],
+  "musicCues": [
+    {"id": "music_adventure_loop_01", "bpm": 112, "scale": "major", "licenceId": "lic_cv_original_v1"},
+    {"id": "music_calm_meadow_01", "bpm": 76, "scale": "pentatonic", "licenceId": "lic_cv_original_v1"},
+    {"id": "music_mystery_pulse_01", "bpm": 92, "scale": "minor", "licenceId": "lic_cv_original_v1"}
+  ],
+  "storyTemplates": [
+    {"id": "tpl_first_day_hero", "name": "First Day as a Hero", "genre": "adventure", "tone": "uplifting"},
+    {"id": "tpl_mixed_up_mission", "name": "The Mixed-Up Mission", "genre": "comedy", "tone": "playful"},
+    {"id": "tpl_friendship_quest", "name": "Friendship Quest", "genre": "fantasy", "tone": "heartwarming"}
+  ],
+  "characterTemplates": [
+    {"id": "tmpl_voltwood_guardian", "featured": true, "recipe": {"schemaVersion": 1, "name": "Voltwood Guardian", "category": "hero", "baseModelId": "humanoid_base_01", "style": "stylized_cinematic", "proportions": {"height": 1.08, "shoulderWidth": 1.12, "headScale": 1.0}, "palette": {"primary": "#245A75", "secondary": "#4A8C63", "accent": "#D7E7A1"}, "modules": ["original_armor_shoulders_02", "leaf_cape_01", "energy_bracers_03"], "powers": ["electricity", "plant_growth"], "personalityTraits": ["protective", "curious", "calm"], "voiceProfileId": "voice_fictional_warm_01", "assetManifestVersion": "1.0"}},
+    {"id": "tmpl_nova_sprocket", "featured": true, "recipe": {"schemaVersion": 1, "name": "Nova Sprocket", "category": "robot", "baseModelId": "mech_base_01", "style": "neon_lowpoly", "proportions": {"height": 0.95, "shoulderWidth": 1.05, "headScale": 1.1}, "palette": {"primary": "#E4572E", "secondary": "#29335C", "accent": "#F3A712"}, "modules": ["star_visor_01", "jet_pack_01", "tread_boots_01"], "powers": ["force_field", "gadgetry"], "personalityTraits": ["cheerful", "brave"], "voiceProfileId": "voice_fictional_robotic_04", "assetManifestVersion": "1.0"}},
+    {"id": "tmpl_mossy_pip", "featured": true, "recipe": {"schemaVersion": 1, "name": "Mossy Pip", "category": "cartoon", "baseModelId": "critter_base_01", "style": "toon_soft", "proportions": {"height": 0.9, "shoulderWidth": 1.0, "headScale": 1.2}, "palette": {"primary": "#7FB069", "secondary": "#E6AA68", "accent": "#FFF1D0"}, "modules": ["leaf_cape_01", "antenna_pair_01"], "powers": ["plant_growth"], "personalityTraits": ["playful", "shy", "kind"], "voiceProfileId": "voice_fictional_squeaky_05", "assetManifestVersion": "1.0"}},
+    {"id": "tmpl_grimble", "featured": false, "recipe": {"schemaVersion": 1, "name": "Grimble Gloomcoat", "category": "villain", "baseModelId": "humanoid_toon_02", "style": "clay_matte", "proportions": {"height": 0.92, "shoulderWidth": 1.2, "headScale": 1.15}, "palette": {"primary": "#4B3F72", "secondary": "#1F2041", "accent": "#FFC857"}, "modules": ["crystal_horns_01", "explorer_scarf_01"], "powers": ["shape_shift", "invisibility"], "personalityTraits": ["grumpy", "cunning", "dramatic"], "voiceProfileId": "voice_fictional_deep_03", "assetManifestVersion": "1.0"}},
+    {"id": "tmpl_zibba", "featured": false, "recipe": {"schemaVersion": 1, "name": "Zibba Orbling", "category": "alien", "baseModelId": "alien_base_01", "style": "toon_soft", "proportions": {"height": 0.85, "shoulderWidth": 0.9, "headScale": 1.25}, "palette": {"primary": "#3BCEAC", "secondary": "#540D6E", "accent": "#EE4266"}, "modules": ["antenna_pair_01", "star_visor_01"], "powers": ["time_slow", "electricity"], "personalityTraits": ["curious", "mischievous"], "voiceProfileId": "voice_fictional_bright_02", "assetManifestVersion": "1.0"}},
+    {"id": "tmpl_ember_ridgeback", "featured": false, "recipe": {"schemaVersion": 1, "name": "Ember Ridgeback", "category": "creature", "baseModelId": "creature_base_01", "style": "stylized_cinematic", "proportions": {"height": 1.0, "shoulderWidth": 1.1, "headScale": 0.95}, "palette": {"primary": "#C44536", "secondary": "#772E25", "accent": "#EDDDD4"}, "modules": ["crystal_horns_01", "spike_tail_01"], "powers": ["fire_breath", "sonic_roar"], "personalityTraits": ["loyal", "stubborn", "brave"], "voiceProfileId": "voice_fictional_deep_03", "assetManifestVersion": "1.0"}}
+  ]
+}

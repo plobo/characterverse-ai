@@ -1,0 +1,27 @@
+# Local development stack: FastAPI + PostgreSQL + Redis + RQ render worker + local object storage volume.
+# Mock (local, deterministic) AI adapters are used by default; no paid services are required.
+services:
+  postgres:
+    image: postgres:16
+    environment: {POSTGRES_USER: cv, POSTGRES_PASSWORD: cv, POSTGRES_DB: characterverse}
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U cv"], interval: 5s, retries: 10}
+  redis:
+    image: redis:7
+    ports: ["6379:6379"]
+  api:
+    build: {context: ., dockerfile: infrastructure/docker/backend.Dockerfile}
+    env_file: infrastructure/local-dev/backend.env
+    ports: ["8000:8000"]
+    volumes: [storage:/srv/var]
+    depends_on: {postgres: {condition: service_healthy}, redis: {condition: service_started}}
+    command: sh -c "alembic upgrade head && uvicorn --factory app.main:app_factory --host 0.0.0.0 --port 8000"
+  worker:
+    build: {context: ., dockerfile: infrastructure/docker/backend.Dockerfile}
+    env_file: infrastructure/local-dev/backend.env
+    volumes: [storage:/srv/var]
+    depends_on: [api, redis]
+    command: rq worker renders --url redis://redis:6379/0
+    deploy: {resources: {limits: {cpus: "2", memory: 2g}}}
+volumes: {pgdata: {}, storage: {}}

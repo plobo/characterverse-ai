@@ -1,0 +1,116 @@
+{
+  "partsVersion": "1.0",
+  "notes": "Deterministic primitive layouts used for previews on iOS, Android and the backend. y-up, ground at y=0, +z faces camera. See docs/ARCHITECTURE.md#procedural-assembly.",
+  "baseModels": {
+    "humanoid_base_01": {
+      "skin": "#E9C9A8",
+      "headCenter": [0, 1.85, 0],
+      "anchors": {"shoulders": [0.36, 1.5, 0], "back": [0, 1.25, -0.24], "arms": [0.5, 1.0, 0], "face": [0, 1.88, 0.22], "head_top": [0, 2.12, 0], "legs": [0.18, 0.12, 0], "tail": [0, 0.8, -0.25], "neck": [0, 1.58, 0.05]},
+      "parts": [
+        {"id": "leg_l", "shape": "capsule", "group": "body", "position": [-0.18, 0.45, 0], "size": [0.22, 0.9, 0.22], "color": "secondary"},
+        {"id": "leg_r", "shape": "capsule", "group": "body", "position": [0.18, 0.45, 0], "size": [0.22, 0.9, 0.22], "color": "secondary"},
+        {"id": "torso", "shape": "box", "group": "body", "position": [0, 1.22, 0], "size": [0.68, 0.72, 0.38], "color": "primary"},
+        {"id": "arm_l", "shape": "capsule", "group": "body", "position": [-0.5, 1.18, 0], "size": [0.18, 0.74, 0.18], "color": "primary"},
+        {"id": "arm_r", "shape": "capsule", "group": "body", "position": [0.5, 1.18, 0], "size": [0.18, 0.74, 0.18], "color": "primary"},
+        {"id": "head", "shape": "sphere", "group": "head", "position": [0, 1.85, 0], "size": [0.48, 0.52, 0.48], "color": "skin"},
+        {"id": "eye_l", "shape": "sphere", "group": "head", "position": [-0.1, 1.88, 0.22], "size": [0.08, 0.09, 0.05], "color": "#1B1B2F"},
+        {"id": "eye_r", "shape": "sphere", "group": "head", "position": [0.1, 1.88, 0.22], "size": [0.08, 0.09, 0.05], "color": "#1B1B2F"}
+      ]
+    },
+    "humanoid_toon_02": {
+      "skin": "#F2D0B5",
+      "headCenter": [0, 1.55, 0],
+      "anchors": {"shoulders": [0.32, 1.12, 0], "back": [0, 0.95, -0.24], "arms": [0.44, 0.75, 0], "face": [0, 1.6, 0.32], "head_top": [0, 1.92, 0], "legs": [0.16, 0.1, 0], "tail": [0, 0.55, -0.25], "neck": [0, 1.2, 0.05]},
+      "parts": [
+        {"id": "leg_l", "shape": "capsule", "group": "body", "position": [-0.16, 0.3, 0], "size": [0.22, 0.6, 0.22], "color": "secondary"},
+        {"id": "leg_r", "shape": "capsule", "group": "body", "position": [0.16, 0.3, 0], "size": [0.22, 0.6, 0.22], "color": "secondary"},
+        {"id": "torso", "shape": "sphere", "group": "body", "position": [0, 0.88, 0], "size": [0.64, 0.66, 0.46], "color": "primary"},
+        {"id": "arm_l", "shape": "capsule", "group": "body", "position": [-0.44, 0.86, 0], "size": [0.16, 0.56, 0.16], "color": "primary"},
+        {"id": "arm_r", "shape": "capsule", "group": "body", "position": [0.44, 0.86, 0], "size": [0.16, 0.56, 0.16], "color": "primary"},
+        {"id": "head", "shape": "sphere", "group": "head", "position": [0, 1.55, 0], "size": [0.72, 0.7, 0.68], "color": "skin"},
+        {"id": "eye_l", "shape": "sphere", "group": "head", "position": [-0.14, 1.6, 0.31], "size": [0.12, 0.15, 0.06], "color": "#1B1B2F"},
+        {"id": "eye_r", "shape": "sphere", "group": "head", "position": [0.14, 1.6, 0.31], "size": [0.12, 0.15, 0.06], "color": "#1B1B2F"}
+      ]
+    },
+    "critter_base_01": {
+      "skin": "#FFE5B4",
+      "headCenter": [0, 1.05, 0.05],
+      "anchors": {"shoulders": [0.25, 0.72, 0], "back": [0, 0.6, -0.3], "arms": [0.34, 0.5, 0.05], "face": [0, 1.08, 0.36], "head_top": [0, 1.42, 0], "legs": [0.15, 0.08, 0], "tail": [0, 0.35, -0.35], "neck": [0, 0.78, 0.1]},
+      "parts": [
+        {"id": "foot_l", "shape": "sphere", "group": "body", "position": [-0.15, 0.08, 0.06], "size": [0.2, 0.14, 0.26], "color": "secondary"},
+        {"id": "foot_r", "shape": "sphere", "group": "body", "position": [0.15, 0.08, 0.06], "size": [0.2, 0.14, 0.26], "color": "secondary"},
+        {"id": "body", "shape": "sphere", "group": "body", "position": [0, 0.45, 0], "size": [0.62, 0.66, 0.56], "color": "primary"},
+        {"id": "belly", "shape": "sphere", "group": "body", "position": [0, 0.42, 0.18], "size": [0.38, 0.42, 0.24], "color": "accent"},
+        {"id": "paw_l", "shape": "sphere", "group": "body", "position": [-0.32, 0.5, 0.08], "size": [0.14, 0.18, 0.14], "color": "primary"},
+        {"id": "paw_r", "shape": "sphere", "group": "body", "position": [0.32, 0.5, 0.08], "size": [0.14, 0.18, 0.14], "color": "primary"},
+        {"id": "head", "shape": "sphere", "group": "head", "position": [0, 1.05, 0.05], "size": [0.66, 0.6, 0.6], "color": "primary"},
+        {"id": "ear_l", "shape": "cone", "group": "head", "position": [-0.22, 1.38, 0], "size": [0.16, 0.26, 0.12], "color": "secondary"},
+        {"id": "ear_r", "shape": "cone", "group": "head", "position": [0.22, 1.38, 0], "size": [0.16, 0.26, 0.12], "color": "secondary"},
+        {"id": "eye_l", "shape": "sphere", "group": "head", "position": [-0.13, 1.1, 0.32], "size": [0.12, 0.14, 0.05], "color": "#1B1B2F"},
+        {"id": "eye_r", "shape": "sphere", "group": "head", "position": [0.13, 1.1, 0.32], "size": [0.12, 0.14, 0.05], "color": "#1B1B2F"}
+      ]
+    },
+    "mech_base_01": {
+      "skin": "#C9D1DB",
+      "headCenter": [0, 1.78, 0],
+      "anchors": {"shoulders": [0.42, 1.45, 0], "back": [0, 1.2, -0.28], "arms": [0.56, 0.95, 0], "face": [0, 1.8, 0.21], "head_top": [0, 2.05, 0], "legs": [0.2, 0.1, 0], "tail": [0, 0.8, -0.3], "neck": [0, 1.55, 0.05]},
+      "parts": [
+        {"id": "leg_l", "shape": "cylinder", "group": "body", "position": [-0.2, 0.42, 0], "size": [0.24, 0.84, 0.24], "color": "secondary"},
+        {"id": "leg_r", "shape": "cylinder", "group": "body", "position": [0.2, 0.42, 0], "size": [0.24, 0.84, 0.24], "color": "secondary"},
+        {"id": "torso", "shape": "box", "group": "body", "position": [0, 1.18, 0], "size": [0.8, 0.7, 0.44], "color": "primary"},
+        {"id": "core", "shape": "sphere", "group": "body", "position": [0, 1.2, 0.22], "size": [0.18, 0.18, 0.06], "color": "accent"},
+        {"id": "arm_l", "shape": "cylinder", "group": "body", "position": [-0.56, 1.12, 0], "size": [0.18, 0.7, 0.18], "color": "skin"},
+        {"id": "arm_r", "shape": "cylinder", "group": "body", "position": [0.56, 1.12, 0], "size": [0.18, 0.7, 0.18], "color": "skin"},
+        {"id": "head", "shape": "box", "group": "head", "position": [0, 1.78, 0], "size": [0.5, 0.4, 0.4], "color": "skin"},
+        {"id": "eye_l", "shape": "box", "group": "head", "position": [-0.11, 1.8, 0.2], "size": [0.1, 0.06, 0.03], "color": "accent"},
+        {"id": "eye_r", "shape": "box", "group": "head", "position": [0.11, 1.8, 0.2], "size": [0.1, 0.06, 0.03], "color": "accent"}
+      ]
+    },
+    "alien_base_01": {
+      "skin": "#B8F2E6",
+      "headCenter": [0, 1.62, 0],
+      "anchors": {"shoulders": [0.26, 1.12, 0], "back": [0, 0.95, -0.2], "arms": [0.36, 0.78, 0], "face": [0, 1.66, 0.38], "head_top": [0, 2.05, 0], "legs": [0.13, 0.1, 0], "tail": [0, 0.55, -0.22], "neck": [0, 1.2, 0.05]},
+      "parts": [
+        {"id": "leg_l", "shape": "capsule", "group": "body", "position": [-0.13, 0.32, 0], "size": [0.14, 0.64, 0.14], "color": "secondary"},
+        {"id": "leg_r", "shape": "capsule", "group": "body", "position": [0.13, 0.32, 0], "size": [0.14, 0.64, 0.14], "color": "secondary"},
+        {"id": "torso", "shape": "capsule", "group": "body", "position": [0, 0.92, 0], "size": [0.42, 0.62, 0.3], "color": "primary"},
+        {"id": "arm_l", "shape": "capsule", "group": "body", "position": [-0.32, 0.86, 0], "size": [0.12, 0.6, 0.12], "color": "primary"},
+        {"id": "arm_r", "shape": "capsule", "group": "body", "position": [0.32, 0.86, 0], "size": [0.12, 0.6, 0.12], "color": "primary"},
+        {"id": "head", "shape": "sphere", "group": "head", "position": [0, 1.62, 0], "size": [0.82, 0.74, 0.74], "color": "primary"},
+        {"id": "eye_l", "shape": "sphere", "group": "head", "position": [-0.2, 1.64, 0.33], "size": [0.14, 0.18, 0.06], "color": "#1B1B2F"},
+        {"id": "eye_m", "shape": "sphere", "group": "head", "position": [0, 1.76, 0.36], "size": [0.12, 0.15, 0.06], "color": "#1B1B2F"},
+        {"id": "eye_r", "shape": "sphere", "group": "head", "position": [0.2, 1.64, 0.33], "size": [0.14, 0.18, 0.06], "color": "#1B1B2F"}
+      ]
+    },
+    "creature_base_01": {
+      "skin": "#EDDDD4",
+      "headCenter": [0, 1.05, 0.55],
+      "anchors": {"shoulders": [0.3, 0.98, 0.2], "back": [0, 1.0, -0.1], "arms": [0.32, 0.4, 0.3], "face": [0, 1.1, 0.85], "head_top": [0, 1.38, 0.5], "legs": [0.3, 0.1, 0], "tail": [0, 0.75, -0.75], "neck": [0, 0.95, 0.45]},
+      "parts": [
+        {"id": "leg_fl", "shape": "cylinder", "group": "body", "position": [-0.3, 0.3, 0.35], "size": [0.2, 0.6, 0.2], "color": "secondary"},
+        {"id": "leg_fr", "shape": "cylinder", "group": "body", "position": [0.3, 0.3, 0.35], "size": [0.2, 0.6, 0.2], "color": "secondary"},
+        {"id": "leg_bl", "shape": "cylinder", "group": "body", "position": [-0.3, 0.3, -0.4], "size": [0.22, 0.6, 0.22], "color": "secondary"},
+        {"id": "leg_br", "shape": "cylinder", "group": "body", "position": [0.3, 0.3, -0.4], "size": [0.22, 0.6, 0.22], "color": "secondary"},
+        {"id": "body", "shape": "sphere", "group": "body", "position": [0, 0.78, 0], "size": [0.8, 0.6, 1.2], "color": "primary"},
+        {"id": "head", "shape": "sphere", "group": "head", "position": [0, 1.05, 0.55], "size": [0.56, 0.5, 0.6], "color": "primary"},
+        {"id": "snout", "shape": "sphere", "group": "head", "position": [0, 0.98, 0.82], "size": [0.3, 0.22, 0.26], "color": "skin"},
+        {"id": "eye_l", "shape": "sphere", "group": "head", "position": [-0.14, 1.14, 0.8], "size": [0.09, 0.1, 0.05], "color": "#FFC857"},
+        {"id": "eye_r", "shape": "sphere", "group": "head", "position": [0.14, 1.14, 0.8], "size": [0.09, 0.1, 0.05], "color": "#FFC857"}
+      ]
+    }
+  },
+  "modules": {
+    "original_armor_shoulders_02": {"group": "body", "mirrorX": true, "parts": [{"id": "plate", "shape": "sphere", "position": [0.06, 0.0, 0], "size": [0.3, 0.18, 0.34], "color": "accent"}]},
+    "leaf_cape_01": {"group": "body", "mirrorX": false, "parts": [{"id": "cape", "shape": "box", "position": [0, -0.15, 0], "size": [0.62, 0.95, 0.05], "color": "secondary"}]},
+    "energy_bracers_03": {"group": "body", "mirrorX": true, "parts": [{"id": "bracer", "shape": "cylinder", "position": [0, 0, 0], "size": [0.22, 0.2, 0.22], "color": "accent"}]},
+    "star_visor_01": {"group": "head", "mirrorX": false, "parts": [{"id": "visor", "shape": "box", "position": [0, 0, 0.02], "size": [0.4, 0.1, 0.05], "color": "#7FD8FF"}]},
+    "antenna_pair_01": {"group": "head", "mirrorX": true, "parts": [{"id": "stalk", "shape": "cylinder", "position": [0.12, 0.08, 0], "size": [0.03, 0.2, 0.03], "color": "secondary"}, {"id": "bobble", "shape": "sphere", "position": [0.12, 0.2, 0], "size": [0.09, 0.09, 0.09], "color": "accent"}]},
+    "crystal_horns_01": {"group": "head", "mirrorX": true, "parts": [{"id": "horn", "shape": "cone", "position": [0.14, 0.04, 0], "size": [0.1, 0.24, 0.1], "color": "#B39CD0"}]},
+    "jet_pack_01": {"group": "body", "mirrorX": true, "parts": [{"id": "tank", "shape": "cylinder", "position": [0.12, 0, -0.04], "size": [0.18, 0.5, 0.18], "color": "accent"}]},
+    "moth_wings_01": {"group": "body", "mirrorX": true, "parts": [{"id": "wing", "shape": "sphere", "position": [0.32, 0.15, -0.04], "size": [0.55, 0.7, 0.04], "color": "accent"}]},
+    "spike_tail_01": {"group": "body", "mirrorX": false, "parts": [{"id": "tail", "shape": "cone", "position": [0, 0, -0.1], "size": [0.2, 0.2, 0.6], "color": "secondary"}]},
+    "tread_boots_01": {"group": "body", "mirrorX": true, "parts": [{"id": "boot", "shape": "box", "position": [0, 0, 0.04], "size": [0.28, 0.2, 0.36], "color": "accent"}]},
+    "explorer_scarf_01": {"group": "body", "mirrorX": false, "parts": [{"id": "scarf", "shape": "cylinder", "position": [0, 0, 0], "size": [0.4, 0.1, 0.34], "color": "accent"}]},
+    "experimental_glow_tail_01": {"group": "body", "mirrorX": false, "parts": [{"id": "tail", "shape": "cone", "position": [0, 0, -0.1], "size": [0.2, 0.2, 0.6], "color": "#FFFF00"}]}
+  }
+}

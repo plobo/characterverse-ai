@@ -1,0 +1,14 @@
+{
+  "error": {
+    "code": "RECIPE_INVALID",
+    "message": "Character recipe failed validation",
+    "details": [
+      {
+        "code": "INCOMPATIBLE_MODULE",
+        "field": "modules/0",
+        "message": "spike_tail_01 does not fit rig humanoid_v1"
+      }
+    ],
+    "retryable": false
+  }
+}

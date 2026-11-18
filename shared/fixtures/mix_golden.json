@@ -1,0 +1,801 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "name": "equal_appearance",
+      "sources": [
+        {
+          "id": "src_0",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Voltwood Guardian",
+            "category": "hero",
+            "baseModelId": "humanoid_base_01",
+            "style": "stylized_cinematic",
+            "proportions": {
+              "height": 1.08,
+              "shoulderWidth": 1.12,
+              "headScale": 1.0
+            },
+            "palette": {
+              "primary": "#245A75",
+              "secondary": "#4A8C63",
+              "accent": "#D7E7A1"
+            },
+            "modules": [
+              "original_armor_shoulders_02",
+              "leaf_cape_01",
+              "energy_bracers_03"
+            ],
+            "powers": [
+              "electricity",
+              "plant_growth"
+            ],
+            "personalityTraits": [
+              "protective",
+              "curious",
+              "calm"
+            ],
+            "voiceProfileId": "voice_fictional_warm_01",
+            "assetManifestVersion": "1.0"
+          }
+        },
+        {
+          "id": "src_1",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Nova Sprocket",
+            "category": "robot",
+            "baseModelId": "mech_base_01",
+            "style": "neon_lowpoly",
+            "proportions": {
+              "height": 0.95,
+              "shoulderWidth": 1.05,
+              "headScale": 1.1
+            },
+            "palette": {
+              "primary": "#E4572E",
+              "secondary": "#29335C",
+              "accent": "#F3A712"
+            },
+            "modules": [
+              "star_visor_01",
+              "jet_pack_01",
+              "tread_boots_01"
+            ],
+            "powers": [
+              "force_field",
+              "gadgetry"
+            ],
+            "personalityTraits": [
+              "cheerful",
+              "brave"
+            ],
+            "voiceProfileId": "voice_fictional_robotic_04",
+            "assetManifestVersion": "1.0"
+          }
+        }
+      ],
+      "weights": null,
+      "dimensions": [
+        "appearance"
+      ],
+      "expected": {
+        "recipe": {
+          "schemaVersion": 1,
+          "name": "Voltwood Sprocket",
+          "category": "hero",
+          "baseModelId": "humanoid_base_01",
+          "style": "stylized_cinematic",
+          "proportions": {
+            "height": 1.02,
+            "shoulderWidth": 1.09,
+            "headScale": 1.05
+          },
+          "palette": {
+            "primary": "#845952",
+            "secondary": "#3A6060",
+            "accent": "#E5C75A"
+          },
+          "modules": [
+            "original_armor_shoulders_02",
+            "leaf_cape_01",
+            "energy_bracers_03",
+            "star_visor_01",
+            "tread_boots_01"
+          ],
+          "powers": [
+            "electricity",
+            "plant_growth"
+          ],
+          "personalityTraits": [
+            "protective",
+            "curious",
+            "calm"
+          ],
+          "voiceProfileId": "voice_fictional_warm_01",
+          "assetManifestVersion": "1.0"
+        },
+        "omitted": [
+          {
+            "id": "jet_pack_01",
+            "kind": "module",
+            "reason": "slot_taken"
+          }
+        ],
+        "lineage": [
+          {
+            "sourceCharacterId": "src_0",
+            "weight": 0.5,
+            "dimensions": [
+              "appearance"
+            ]
+          },
+          {
+            "sourceCharacterId": "src_1",
+            "weight": 0.5,
+            "dimensions": [
+              "appearance"
+            ]
+          }
+        ],
+        "dominantSourceId": "src_0",
+        "warningCodes": [
+          "RIG_MISMATCH",
+          "TRAITS_OMITTED"
+        ]
+      }
+    },
+    {
+      "name": "weighted_all_cross_rig",
+      "sources": [
+        {
+          "id": "src_0",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Mossy Pip",
+            "category": "cartoon",
+            "baseModelId": "critter_base_01",
+            "style": "toon_soft",
+            "proportions": {
+              "height": 0.9,
+              "shoulderWidth": 1.0,
+              "headScale": 1.2
+            },
+            "palette": {
+              "primary": "#7FB069",
+              "secondary": "#E6AA68",
+              "accent": "#FFF1D0"
+            },
+            "modules": [
+              "leaf_cape_01",
+              "antenna_pair_01"
+            ],
+            "powers": [
+              "plant_growth"
+            ],
+            "personalityTraits": [
+              "playful",
+              "shy",
+              "kind"
+            ],
+            "voiceProfileId": "voice_fictional_squeaky_05",
+            "assetManifestVersion": "1.0"
+          }
+        },
+        {
+          "id": "src_1",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Ember Ridgeback",
+            "category": "creature",
+            "baseModelId": "creature_base_01",
+            "style": "stylized_cinematic",
+            "proportions": {
+              "height": 1.0,
+              "shoulderWidth": 1.1,
+              "headScale": 0.95
+            },
+            "palette": {
+              "primary": "#C44536",
+              "secondary": "#772E25",
+              "accent": "#EDDDD4"
+            },
+            "modules": [
+              "crystal_horns_01",
+              "spike_tail_01"
+            ],
+            "powers": [
+              "fire_breath",
+              "sonic_roar"
+            ],
+            "personalityTraits": [
+              "loyal",
+              "stubborn",
+              "brave"
+            ],
+            "voiceProfileId": "voice_fictional_deep_03",
+            "assetManifestVersion": "1.0"
+          }
+        }
+      ],
+      "weights": {
+        "src_0": 1,
+        "src_1": 3
+      },
+      "dimensions": [
+        "all"
+      ],
+      "expected": {
+        "recipe": {
+          "schemaVersion": 1,
+          "name": "Ember Pip",
+          "category": "creature",
+          "baseModelId": "creature_base_01",
+          "style": "stylized_cinematic",
+          "proportions": {
+            "height": 0.98,
+            "shoulderWidth": 1.08,
+            "headScale": 1.01
+          },
+          "palette": {
+            "primary": "#B36043",
+            "secondary": "#934D36",
+            "accent": "#F2E2D3"
+          },
+          "modules": [
+            "crystal_horns_01",
+            "spike_tail_01"
+          ],
+          "powers": [
+            "fire_breath",
+            "sonic_roar",
+            "plant_growth"
+          ],
+          "personalityTraits": [
+            "loyal",
+            "stubborn",
+            "brave",
+            "playful",
+            "shy"
+          ],
+          "voiceProfileId": "voice_fictional_squeaky_05",
+          "assetManifestVersion": "1.0"
+        },
+        "omitted": [
+          {
+            "id": "leaf_cape_01",
+            "kind": "module",
+            "reason": "incompatible_rig"
+          },
+          {
+            "id": "antenna_pair_01",
+            "kind": "module",
+            "reason": "slot_taken"
+          },
+          {
+            "id": "kind",
+            "kind": "trait",
+            "reason": "limit_reached"
+          }
+        ],
+        "lineage": [
+          {
+            "sourceCharacterId": "src_0",
+            "weight": 0.25,
+            "dimensions": [
+              "appearance",
+              "powers",
+              "personality",
+              "voice"
+            ]
+          },
+          {
+            "sourceCharacterId": "src_1",
+            "weight": 0.75,
+            "dimensions": [
+              "appearance",
+              "powers",
+              "personality",
+              "voice"
+            ]
+          }
+        ],
+        "dominantSourceId": "src_1",
+        "warningCodes": [
+          "RIG_MISMATCH",
+          "TRAITS_OMITTED"
+        ]
+      }
+    },
+    {
+      "name": "three_way_powers_personality",
+      "sources": [
+        {
+          "id": "src_0",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Voltwood Guardian",
+            "category": "hero",
+            "baseModelId": "humanoid_base_01",
+            "style": "stylized_cinematic",
+            "proportions": {
+              "height": 1.08,
+              "shoulderWidth": 1.12,
+              "headScale": 1.0
+            },
+            "palette": {
+              "primary": "#245A75",
+              "secondary": "#4A8C63",
+              "accent": "#D7E7A1"
+            },
+            "modules": [
+              "original_armor_shoulders_02",
+              "leaf_cape_01",
+              "energy_bracers_03"
+            ],
+            "powers": [
+              "electricity",
+              "plant_growth"
+            ],
+            "personalityTraits": [
+              "protective",
+              "curious",
+              "calm"
+            ],
+            "voiceProfileId": "voice_fictional_warm_01",
+            "assetManifestVersion": "1.0"
+          }
+        },
+        {
+          "id": "src_1",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Zibba Orbling",
+            "category": "alien",
+            "baseModelId": "alien_base_01",
+            "style": "toon_soft",
+            "proportions": {
+              "height": 0.85,
+              "shoulderWidth": 0.9,
+              "headScale": 1.25
+            },
+            "palette": {
+              "primary": "#3BCEAC",
+              "secondary": "#540D6E",
+              "accent": "#EE4266"
+            },
+            "modules": [
+              "antenna_pair_01",
+              "star_visor_01"
+            ],
+            "powers": [
+              "time_slow",
+              "electricity"
+            ],
+            "personalityTraits": [
+              "curious",
+              "mischievous"
+            ],
+            "voiceProfileId": "voice_fictional_bright_02",
+            "assetManifestVersion": "1.0"
+          }
+        },
+        {
+          "id": "src_2",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Grimble Gloomcoat",
+            "category": "villain",
+            "baseModelId": "humanoid_toon_02",
+            "style": "clay_matte",
+            "proportions": {
+              "height": 0.92,
+              "shoulderWidth": 1.2,
+              "headScale": 1.15
+            },
+            "palette": {
+              "primary": "#4B3F72",
+              "secondary": "#1F2041",
+              "accent": "#FFC857"
+            },
+            "modules": [
+              "crystal_horns_01",
+              "explorer_scarf_01"
+            ],
+            "powers": [
+              "shape_shift",
+              "invisibility"
+            ],
+            "personalityTraits": [
+              "grumpy",
+              "cunning",
+              "dramatic"
+            ],
+            "voiceProfileId": "voice_fictional_deep_03",
+            "assetManifestVersion": "1.0"
+          }
+        }
+      ],
+      "weights": null,
+      "dimensions": [
+        "powers",
+        "personality"
+      ],
+      "expected": {
+        "recipe": {
+          "schemaVersion": 1,
+          "name": "Voltwood Orbling",
+          "category": "hero",
+          "baseModelId": "humanoid_base_01",
+          "style": "stylized_cinematic",
+          "proportions": {
+            "height": 1.08,
+            "shoulderWidth": 1.12,
+            "headScale": 1.0
+          },
+          "palette": {
+            "primary": "#245A75",
+            "secondary": "#4A8C63",
+            "accent": "#D7E7A1"
+          },
+          "modules": [
+            "original_armor_shoulders_02",
+            "leaf_cape_01",
+            "energy_bracers_03"
+          ],
+          "powers": [
+            "electricity",
+            "plant_growth",
+            "time_slow"
+          ],
+          "personalityTraits": [
+            "protective",
+            "curious",
+            "calm",
+            "mischievous",
+            "grumpy"
+          ],
+          "voiceProfileId": "voice_fictional_warm_01",
+          "assetManifestVersion": "1.0"
+        },
+        "omitted": [
+          {
+            "id": "shape_shift",
+            "kind": "power",
+            "reason": "limit_reached"
+          },
+          {
+            "id": "invisibility",
+            "kind": "power",
+            "reason": "limit_reached"
+          },
+          {
+            "id": "cunning",
+            "kind": "trait",
+            "reason": "limit_reached"
+          },
+          {
+            "id": "dramatic",
+            "kind": "trait",
+            "reason": "limit_reached"
+          }
+        ],
+        "lineage": [
+          {
+            "sourceCharacterId": "src_0",
+            "weight": 0.3333,
+            "dimensions": [
+              "powers",
+              "personality"
+            ]
+          },
+          {
+            "sourceCharacterId": "src_1",
+            "weight": 0.3333,
+            "dimensions": [
+              "powers",
+              "personality"
+            ]
+          },
+          {
+            "sourceCharacterId": "src_2",
+            "weight": 0.3333,
+            "dimensions": [
+              "powers",
+              "personality"
+            ]
+          }
+        ],
+        "dominantSourceId": "src_0",
+        "warningCodes": [
+          "TRAITS_OMITTED"
+        ]
+      }
+    },
+    {
+      "name": "voice_only",
+      "sources": [
+        {
+          "id": "src_0",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Nova Sprocket",
+            "category": "robot",
+            "baseModelId": "mech_base_01",
+            "style": "neon_lowpoly",
+            "proportions": {
+              "height": 0.95,
+              "shoulderWidth": 1.05,
+              "headScale": 1.1
+            },
+            "palette": {
+              "primary": "#E4572E",
+              "secondary": "#29335C",
+              "accent": "#F3A712"
+            },
+            "modules": [
+              "star_visor_01",
+              "jet_pack_01",
+              "tread_boots_01"
+            ],
+            "powers": [
+              "force_field",
+              "gadgetry"
+            ],
+            "personalityTraits": [
+              "cheerful",
+              "brave"
+            ],
+            "voiceProfileId": "voice_fictional_robotic_04",
+            "assetManifestVersion": "1.0"
+          }
+        },
+        {
+          "id": "src_1",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Zibba Orbling",
+            "category": "alien",
+            "baseModelId": "alien_base_01",
+            "style": "toon_soft",
+            "proportions": {
+              "height": 0.85,
+              "shoulderWidth": 0.9,
+              "headScale": 1.25
+            },
+            "palette": {
+              "primary": "#3BCEAC",
+              "secondary": "#540D6E",
+              "accent": "#EE4266"
+            },
+            "modules": [
+              "antenna_pair_01",
+              "star_visor_01"
+            ],
+            "powers": [
+              "time_slow",
+              "electricity"
+            ],
+            "personalityTraits": [
+              "curious",
+              "mischievous"
+            ],
+            "voiceProfileId": "voice_fictional_bright_02",
+            "assetManifestVersion": "1.0"
+          }
+        }
+      ],
+      "weights": {
+        "src_0": 2,
+        "src_1": 1
+      },
+      "dimensions": [
+        "voice"
+      ],
+      "expected": {
+        "recipe": {
+          "schemaVersion": 1,
+          "name": "Nova Orbling",
+          "category": "robot",
+          "baseModelId": "mech_base_01",
+          "style": "neon_lowpoly",
+          "proportions": {
+            "height": 0.95,
+            "shoulderWidth": 1.05,
+            "headScale": 1.1
+          },
+          "palette": {
+            "primary": "#E4572E",
+            "secondary": "#29335C",
+            "accent": "#F3A712"
+          },
+          "modules": [
+            "star_visor_01",
+            "jet_pack_01",
+            "tread_boots_01"
+          ],
+          "powers": [
+            "force_field",
+            "gadgetry"
+          ],
+          "personalityTraits": [
+            "cheerful",
+            "brave"
+          ],
+          "voiceProfileId": "voice_fictional_bright_02",
+          "assetManifestVersion": "1.0"
+        },
+        "omitted": [],
+        "lineage": [
+          {
+            "sourceCharacterId": "src_0",
+            "weight": 0.6667,
+            "dimensions": [
+              "voice"
+            ]
+          },
+          {
+            "sourceCharacterId": "src_1",
+            "weight": 0.3333,
+            "dimensions": [
+              "voice"
+            ]
+          }
+        ],
+        "dominantSourceId": "src_0",
+        "warningCodes": [
+          "RIG_MISMATCH"
+        ]
+      }
+    },
+    {
+      "name": "uneven_palette",
+      "sources": [
+        {
+          "id": "src_0",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Grimble Gloomcoat",
+            "category": "villain",
+            "baseModelId": "humanoid_toon_02",
+            "style": "clay_matte",
+            "proportions": {
+              "height": 0.92,
+              "shoulderWidth": 1.2,
+              "headScale": 1.15
+            },
+            "palette": {
+              "primary": "#4B3F72",
+              "secondary": "#1F2041",
+              "accent": "#FFC857"
+            },
+            "modules": [
+              "crystal_horns_01",
+              "explorer_scarf_01"
+            ],
+            "powers": [
+              "shape_shift",
+              "invisibility"
+            ],
+            "personalityTraits": [
+              "grumpy",
+              "cunning",
+              "dramatic"
+            ],
+            "voiceProfileId": "voice_fictional_deep_03",
+            "assetManifestVersion": "1.0"
+          }
+        },
+        {
+          "id": "src_1",
+          "recipe": {
+            "schemaVersion": 1,
+            "name": "Zibba Orbling",
+            "category": "alien",
+            "baseModelId": "alien_base_01",
+            "style": "toon_soft",
+            "proportions": {
+              "height": 0.85,
+              "shoulderWidth": 0.9,
+              "headScale": 1.25
+            },
+            "palette": {
+              "primary": "#3BCEAC",
+              "secondary": "#540D6E",
+              "accent": "#EE4266"
+            },
+            "modules": [
+              "antenna_pair_01",
+              "star_visor_01"
+            ],
+            "powers": [
+              "time_slow",
+              "electricity"
+            ],
+            "personalityTraits": [
+              "curious",
+              "mischievous"
+            ],
+            "voiceProfileId": "voice_fictional_bright_02",
+            "assetManifestVersion": "1.0"
+          }
+        }
+      ],
+      "weights": {
+        "src_0": 0.7,
+        "src_1": 0.3
+      },
+      "dimensions": [
+        "appearance",
+        "personality"
+      ],
+      "expected": {
+        "recipe": {
+          "schemaVersion": 1,
+          "name": "Grimble Orbling",
+          "category": "villain",
+          "baseModelId": "humanoid_toon_02",
+          "style": "clay_matte",
+          "proportions": {
+            "height": 0.9,
+            "shoulderWidth": 1.11,
+            "headScale": 1.18
+          },
+          "palette": {
+            "primary": "#466A83",
+            "secondary": "#2F1A4F",
+            "accent": "#FAA05C"
+          },
+          "modules": [
+            "crystal_horns_01",
+            "explorer_scarf_01",
+            "star_visor_01"
+          ],
+          "powers": [
+            "shape_shift",
+            "invisibility"
+          ],
+          "personalityTraits": [
+            "grumpy",
+            "cunning",
+            "dramatic",
+            "curious",
+            "mischievous"
+          ],
+          "voiceProfileId": "voice_fictional_deep_03",
+          "assetManifestVersion": "1.0"
+        },
+        "omitted": [
+          {
+            "id": "antenna_pair_01",
+            "kind": "module",
+            "reason": "slot_taken"
+          }
+        ],
+        "lineage": [
+          {
+            "sourceCharacterId": "src_0",
+            "weight": 0.7,
+            "dimensions": [
+              "appearance",
+              "personality"
+            ]
+          },
+          {
+            "sourceCharacterId": "src_1",
+            "weight": 0.3,
+            "dimensions": [
+              "appearance",
+              "personality"
+            ]
+          }
+        ],
+        "dominantSourceId": "src_0",
+        "warningCodes": [
+          "TRAITS_OMITTED"
+        ]
+      }
+    }
+  ]
+}

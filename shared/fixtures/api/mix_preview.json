@@ -1,0 +1,92 @@
+{
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Voltwood Pip",
+    "category": "hero",
+    "baseModelId": "humanoid_base_01",
+    "style": "stylized_cinematic",
+    "proportions": {
+      "height": 0.99,
+      "shoulderWidth": 1.06,
+      "headScale": 1.1
+    },
+    "palette": {
+      "primary": "#52856F",
+      "secondary": "#989B66",
+      "accent": "#EBECB9"
+    },
+    "modules": [
+      "original_armor_shoulders_02",
+      "leaf_cape_01",
+      "energy_bracers_03",
+      "antenna_pair_01"
+    ],
+    "powers": [
+      "electricity",
+      "plant_growth"
+    ],
+    "personalityTraits": [
+      "protective",
+      "curious",
+      "calm",
+      "playful",
+      "shy"
+    ],
+    "voiceProfileId": "voice_fictional_squeaky_05",
+    "assetManifestVersion": "1.0"
+  },
+  "lineage": [
+    {
+      "sourceCharacterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+      "weight": 0.5,
+      "dimensions": [
+        "appearance",
+        "powers",
+        "personality",
+        "voice"
+      ]
+    },
+    {
+      "sourceCharacterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+      "weight": 0.5,
+      "dimensions": [
+        "appearance",
+        "powers",
+        "personality",
+        "voice"
+      ]
+    }
+  ],
+  "omitted": [
+    {
+      "id": "kind",
+      "kind": "trait",
+      "reason": "limit_reached"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "RIG_MISMATCH",
+      "message": "Different body rigs; using humanoid_base_01 (humanoid_v1) and keeping compatible parts"
+    },
+    {
+      "code": "TRAITS_OMITTED",
+      "message": "1 trait(s) could not be combined"
+    }
+  ],
+  "dominantSourceId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+  "suggestions": [
+    {
+      "name": "Voltwssy",
+      "tagline": "A kind hybrid of Voltwood Guardian and Mossy Pip."
+    },
+    {
+      "name": "Mossy Guardian",
+      "tagline": "A kind hybrid of Voltwood Guardian and Mossy Pip."
+    },
+    {
+      "name": "Guardian-Pip",
+      "tagline": "A kind hybrid of Voltwood Guardian and Mossy Pip."
+    }
+  ]
+}

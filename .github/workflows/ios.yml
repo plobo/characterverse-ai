@@ -1,0 +1,14 @@
+name: ios
+on:
+  push: {paths: ["apps/ios/**", "shared/**", ".github/workflows/ios.yml"]}
+  pull_request: {paths: ["apps/ios/**", "shared/**"]}
+jobs:
+  test:
+    runs-on: macos-15
+    defaults: {run: {working-directory: apps/ios}}
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen && xcodegen generate
+      - run: >
+          xcodebuild test -project CharacterVerse.xcodeproj -scheme CharacterVerse
+          -destination 'platform=iOS Simulator,name=iPhone 16' -quiet

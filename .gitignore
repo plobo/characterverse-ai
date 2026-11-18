@@ -1,0 +1,25 @@
+.DS_Store
+.superpowers/
+# python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+backend/var/
+backend/*.db
+backend/.env
+# ios
+apps/ios/build/
+apps/ios/DerivedData/
+xcuserdata/
+*.xcuserstate
+# android
+apps/android/.gradle/
+apps/android/build/
+apps/android/app/build/
+apps/android/local.properties
+apps/android/.idea/
+apps/android/.kotlin/
+*.apk
+*.aab

@@ -1,0 +1,655 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "name": "valid_template",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": []
+    },
+    {
+      "name": "schema_version",
+      "recipe": {
+        "schemaVersion": 2,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "SCHEMA_VIOLATION"
+      ]
+    },
+    {
+      "name": "height_out_of_range",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.9,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "SCHEMA_VIOLATION"
+      ]
+    },
+    {
+      "name": "bad_hex",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "blue",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "SCHEMA_VIOLATION"
+      ]
+    },
+    {
+      "name": "too_many_powers",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "ice",
+          "flight",
+          "force_field"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "SCHEMA_VIOLATION"
+      ]
+    },
+    {
+      "name": "empty_name",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "SCHEMA_VIOLATION"
+      ]
+    },
+    {
+      "name": "unknown_base",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_99",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "UNKNOWN_ASSET"
+      ]
+    },
+    {
+      "name": "unknown_module",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "laser_sword_01"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "UNKNOWN_ASSET"
+      ]
+    },
+    {
+      "name": "unapproved_module",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "creature",
+        "baseModelId": "creature_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "experimental_glow_tail_01"
+        ],
+        "powers": [],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "ASSET_NOT_APPROVED"
+      ]
+    },
+    {
+      "name": "unknown_category",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "wizardly",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "UNKNOWN_CATEGORY"
+      ]
+    },
+    {
+      "name": "category_not_supported",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "robot",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "CATEGORY_NOT_SUPPORTED"
+      ]
+    },
+    {
+      "name": "incompatible_module",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "spike_tail_01"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "INCOMPATIBLE_MODULE"
+      ]
+    },
+    {
+      "name": "slot_conflict",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "leaf_cape_01",
+          "jet_pack_01"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "SLOT_CONFLICT"
+      ]
+    },
+    {
+      "name": "unsupported_power",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "fire_breath"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "UNSUPPORTED_POWER"
+      ]
+    },
+    {
+      "name": "unknown_trait",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "sneaky"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "UNKNOWN_TRAIT"
+      ]
+    },
+    {
+      "name": "unknown_voice",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_unknown_01",
+        "assetManifestVersion": "1.0"
+      },
+      "expectedCodes": [
+        "UNKNOWN_ASSET"
+      ]
+    },
+    {
+      "name": "manifest_mismatch",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "0.9"
+      },
+      "expectedCodes": [
+        "MANIFEST_VERSION_MISMATCH"
+      ]
+    }
+  ]
+}

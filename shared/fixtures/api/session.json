@@ -1,0 +1,13 @@
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YTY3YjFiYy02ZDc0LTQyOGEtYmRlNi1hNzBhYjM4MTJiMzgiLCJpYXQiOjE3OTQ5NzUwMzQsImV4cCI6MTc5NDk3ODYzNCwidHlwIjoiYWNjZXNzIn0.LyKJacmpdTQUPaTHbitOLSU7-Zd-Ik1FuSFP9ORNgK8",
+  "tokenType": "Bearer",
+  "expiresAt": 1794978634,
+  "user": {
+    "id": "7a67b1bc-6d74-428a-bde6-a70ab3812b38",
+    "displayName": "Sam",
+    "email": null,
+    "isGuest": false,
+    "preferences": {},
+    "createdAt": "2026-11-18T04:10:34.470Z"
+  }
+}

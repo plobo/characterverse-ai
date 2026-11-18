@@ -1,0 +1,5 @@
+# Fictional stand-ins for protected names, used only to exercise the matcher.
+# The real list is curated by trust & safety and injected via CV_DENYLIST_PATH.
+Captain Starlance
+Mega Glimmerbot
+Princess Quillara

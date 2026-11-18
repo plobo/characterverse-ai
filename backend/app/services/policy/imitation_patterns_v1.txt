@@ -1,0 +1,16 @@
+# Generic imitation / affiliation phrasing (no protected names live in source control).
+# One regex per line, matched against normalised text (lowercase, leetspeak folded, punctuation stripped).
+in the style of
+exactly like
+exact copy
+copy of
+lookalike
+look alike
+knock ?off
+rip ?off
+same (costume|suit|logo|outfit|design) as
+(official|licensed) (character|costume|logo)
+from the (movie|film|comic|anime|cartoon|show|game|franchise)
+(trademark|trademarked|copyrighted) (character|logo|design)
+famous (superhero|cartoon character|mascot|movie character)
+fan ?art of

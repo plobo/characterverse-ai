@@ -1,0 +1,47 @@
+{
+  "id": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+  "name": "Voltwood Guardian",
+  "description": "",
+  "category": "hero",
+  "style": "stylized_cinematic",
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Voltwood Guardian",
+    "category": "hero",
+    "baseModelId": "humanoid_base_01",
+    "style": "stylized_cinematic",
+    "proportions": {
+      "height": 1.08,
+      "shoulderWidth": 1.12,
+      "headScale": 1.0
+    },
+    "palette": {
+      "primary": "#245A75",
+      "secondary": "#4A8C63",
+      "accent": "#D7E7A1"
+    },
+    "modules": [
+      "original_armor_shoulders_02",
+      "leaf_cape_01",
+      "energy_bracers_03"
+    ],
+    "powers": [
+      "electricity",
+      "plant_growth"
+    ],
+    "personalityTraits": [
+      "protective",
+      "curious",
+      "calm"
+    ],
+    "voiceProfileId": "voice_fictional_warm_01",
+    "assetManifestVersion": "1.0"
+  },
+  "version": 1,
+  "visibility": "private",
+  "isFavorite": false,
+  "archived": false,
+  "lineage": [],
+  "createdAt": "2026-11-18T04:10:34.524Z",
+  "updatedAt": "2026-11-18T04:10:34.524Z"
+}

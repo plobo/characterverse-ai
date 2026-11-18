@@ -1,0 +1,41 @@
+{
+  "recipe": {
+    "schemaVersion": 1,
+    "name": "Vellyx Unit",
+    "category": "robot",
+    "baseModelId": "mech_base_01",
+    "style": "neon_lowpoly",
+    "proportions": {
+      "height": 1.15,
+      "shoulderWidth": 1.0,
+      "headScale": 1.0
+    },
+    "palette": {
+      "primary": "#2F6FDE",
+      "secondary": "#5B5FC7",
+      "accent": "#2EC4B6"
+    },
+    "modules": [
+      "star_visor_01"
+    ],
+    "powers": [
+      "force_field"
+    ],
+    "personalityTraits": [
+      "curious"
+    ],
+    "voiceProfileId": "voice_fictional_robotic_04",
+    "assetManifestVersion": "1.0"
+  },
+  "warnings": [],
+  "moderation": {
+    "decision": "allow",
+    "reasonCode": null,
+    "feedback": null
+  },
+  "provider": {
+    "name": "cv-local-structured-mock",
+    "version": "1.0",
+    "local": true
+  }
+}

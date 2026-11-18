@@ -1,0 +1,16 @@
+name: backend
+on:
+  push: {paths: ["backend/**", "shared/**", ".github/workflows/backend.yml"]}
+  pull_request: {paths: ["backend/**", "shared/**"]}
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults: {run: {working-directory: backend}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check app tests scripts && ruff format --check app tests scripts
+      - run: pytest -q
+      - run: python -m scripts.generate_contracts --check

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://characterverse.example/schemas/character_recipe.v1.json",
+  "title": "CharacterRecipe v1",
+  "description": "Structural schema for a character recipe. Vocabulary checks (asset IDs, licence approval, rig compatibility) are applied afterwards by the registry validator.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "name", "category", "baseModelId", "style", "proportions", "palette", "modules", "powers", "personalityTraits", "voiceProfileId", "assetManifestVersion"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "name": {"type": "string", "minLength": 1, "maxLength": 40},
+    "category": {"type": "string", "pattern": "^[a-z_]+$"},
+    "baseModelId": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "style": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "proportions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["height", "shoulderWidth", "headScale"],
+      "properties": {
+        "height": {"type": "number", "minimum": 0.7, "maximum": 1.3},
+        "shoulderWidth": {"type": "number", "minimum": 0.7, "maximum": 1.3},
+        "headScale": {"type": "number", "minimum": 0.7, "maximum": 1.3}
+      }
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "secondary", "accent"],
+      "properties": {
+        "primary": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+        "secondary": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+        "accent": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"}
+      }
+    },
+    "modules": {"type": "array", "maxItems": 6, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}},
+    "powers": {"type": "array", "maxItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}},
+    "personalityTraits": {"type": "array", "maxItems": 5, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z_]+$"}},
+    "voiceProfileId": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "assetManifestVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"}
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://characterverse.example/schemas/storyboard.v1.json",
+  "title": "Storyboard v1",
+  "description": "Structured story + storyboard document returned by the story generator and edited by clients. Action, environment, camera, sound and music IDs are validated against the asset registry after schema validation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "title", "logline", "synopsis", "durationSeconds", "aspectRatio", "language", "characters", "musicCueId", "scenes"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "title": {"type": "string", "minLength": 1, "maxLength": 80},
+    "logline": {"type": "string", "maxLength": 200},
+    "synopsis": {"type": "string", "maxLength": 1200},
+    "durationSeconds": {"enum": [15, 30, 60]},
+    "aspectRatio": {"enum": ["16:9", "9:16"]},
+    "language": {"type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$"},
+    "musicCueId": {"type": ["string", "null"], "pattern": "^[a-z0-9_]+$"},
+    "characters": {
+      "type": "array", "minItems": 1, "maxItems": 4,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["characterId", "displayName", "role"],
+        "properties": {
+          "characterId": {"type": "string", "minLength": 1, "maxLength": 64},
+          "displayName": {"type": "string", "minLength": 1, "maxLength": 40},
+          "role": {"enum": ["protagonist", "sidekick", "rival", "mentor", "villain", "friend"]}
+        }
+      }
+    },
+    "scenes": {
+      "type": "array", "minItems": 1, "maxItems": 8,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["sceneId", "sequence", "title", "durationMs", "environmentId", "cameraPresetId", "lightingPresetId", "characters", "dialogue", "soundEffectIds", "transition"],
+        "properties": {
+          "sceneId": {"type": "string", "minLength": 1, "maxLength": 64},
+          "sequence": {"type": "integer", "minimum": 1, "maximum": 8},
+          "title": {"type": "string", "maxLength": 80},
+          "description": {"type": "string", "maxLength": 400},
+          "durationMs": {"type": "integer", "minimum": 2000, "maximum": 15000},
+          "environmentId": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+          "cameraPresetId": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+          "lightingPresetId": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+          "transition": {"enum": ["cut", "fade"]},
+          "characters": {
+            "type": "array", "maxItems": 4,
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["characterId", "position", "scale", "actionId"],
+              "properties": {
+                "characterId": {"type": "string", "minLength": 1, "maxLength": 64},
+                "position": {"enum": ["far_left", "left", "center", "right", "far_right"]},
+                "scale": {"type": "number", "minimum": 0.5, "maximum": 1.5},
+                "actionId": {"type": "string", "pattern": "^[a-z0-9_]+$"}
+              }
+            }
+          },
+          "dialogue": {
+            "type": "array", "maxItems": 6,
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["characterId", "line", "startMs"],
+              "properties": {
+                "characterId": {"type": "string", "minLength": 1, "maxLength": 64},
+                "line": {"type": "string", "minLength": 1, "maxLength": 140},
+                "startMs": {"type": "integer", "minimum": 0}
+              }
+            }
+          },
+          "soundEffectIds": {"type": "array", "maxItems": 4, "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}}
+        }
+      }
+    }
+  }
+}

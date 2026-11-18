@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "envelope": {
+    "error": {
+      "code": "string",
+      "message": "string",
+      "details": [
+        {
+          "code": "string",
+          "field": "string",
+          "message": "string"
+        }
+      ],
+      "retryable": "boolean"
+    }
+  },
+  "retryPolicy": {
+    "retryableCodes": [
+      "INTERNAL",
+      "RATE_LIMITED"
+    ],
+    "networkErrors": "retry",
+    "maxAttempts": 3,
+    "backoff": "exponential 0.5s * 2^n, jitter, cap 8s"
+  },
+  "codes": [
+    {
+      "code": "AUTH_REQUIRED",
+      "httpStatus": 401,
+      "retryable": false,
+      "description": "No session token was sent; sign in."
+    },
+    {
+      "code": "AUTH_INVALID",
+      "httpStatus": 401,
+      "retryable": false,
+      "description": "Session token invalid or expired; sign in again."
+    },
+    {
+      "code": "FORBIDDEN",
+      "httpStatus": 403,
+      "retryable": false,
+      "description": "Action not permitted."
+    },
+    {
+      "code": "NOT_FOUND",
+      "httpStatus": 404,
+      "retryable": false,
+      "description": "Resource does not exist or is not owned by the caller."
+    },
+    {
+      "code": "VALIDATION_FAILED",
+      "httpStatus": 422,
+      "retryable": false,
+      "description": "Request body/params failed validation."
+    },
+    {
+      "code": "RECIPE_INVALID",
+      "httpStatus": 422,
+      "retryable": false,
+      "description": "Character recipe failed schema or registry validation (see details[].code)."
+    },
+    {
+      "code": "MIX_INVALID",
+      "httpStatus": 422,
+      "retryable": false,
+      "description": "Mix request cannot be resolved."
+    },
+    {
+      "code": "STORYBOARD_INVALID",
+      "httpStatus": 422,
+      "retryable": false,
+      "description": "Storyboard failed schema or registry validation."
+    },
+    {
+      "code": "MODERATION_BLOCKED",
+      "httpStatus": 422,
+      "retryable": false,
+      "description": "Content policy: original characters only."
+    },
+    {
+      "code": "UPLOAD_REJECTED",
+      "httpStatus": 422,
+      "retryable": false,
+      "description": "Upload rejected (type, size, rights or content mismatch)."
+    },
+    {
+      "code": "RATE_LIMITED",
+      "httpStatus": 429,
+      "retryable": true,
+      "description": "Too many requests; retry with backoff."
+    },
+    {
+      "code": "QUOTA_EXCEEDED",
+      "httpStatus": 429,
+      "retryable": false,
+      "description": "Usage quota reached (e.g. active renders)."
+    },
+    {
+      "code": "IDEMPOTENCY_CONFLICT",
+      "httpStatus": 409,
+      "retryable": false,
+      "description": "Key reused with a different request, or stale expectedVersion."
+    },
+    {
+      "code": "RENDER_NOT_CANCELLABLE",
+      "httpStatus": 409,
+      "retryable": false,
+      "description": "Job already finished."
+    },
+    {
+      "code": "RENDER_NOT_RETRYABLE",
+      "httpStatus": 409,
+      "retryable": false,
+      "description": "Only failed/cancelled jobs can be retried."
+    },
+    {
+      "code": "RENDER_NOT_READY",
+      "httpStatus": 409,
+      "retryable": false,
+      "description": "Render output is not available yet."
+    },
+    {
+      "code": "SIGNATURE_INVALID",
+      "httpStatus": 403,
+      "retryable": false,
+      "description": "Signed URL is invalid."
+    },
+    {
+      "code": "SIGNATURE_EXPIRED",
+      "httpStatus": 403,
+      "retryable": false,
+      "description": "Signed URL expired; request a new one."
+    },
+    {
+      "code": "INTERNAL",
+      "httpStatus": 500,
+      "retryable": true,
+      "description": "Unexpected server error; retry with backoff."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "18924abc-b313-4dbe-becc-0c1385750c77",
+  "projectId": "95c4ea8a-8970-422f-9c8d-2e8455939be4",
+  "projectTitle": "Map Day",
+  "status": "completed",
+  "progressStage": "completed",
+  "progressPercent": 100,
+  "quality": "draft",
+  "aspectRatio": "16:9",
+  "width": 854,
+  "height": 480,
+  "errorCode": null,
+  "attempts": 1,
+  "cancelRequested": false,
+  "durationMs": 15000,
+  "createdAt": "2026-11-18T04:10:34.675Z",
+  "startedAt": "2026-11-18T04:10:34.681Z",
+  "completedAt": "2026-11-18T04:10:34.697Z"
+}

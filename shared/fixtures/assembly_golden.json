@@ -1,0 +1,1427 @@
+{
+  "version": 1,
+  "tolerance": 1e-09,
+  "cases": [
+    {
+      "templateId": "tmpl_voltwood_guardian",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Voltwood Guardian",
+        "category": "hero",
+        "baseModelId": "humanoid_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.08,
+          "shoulderWidth": 1.12,
+          "headScale": 1.0
+        },
+        "palette": {
+          "primary": "#245A75",
+          "secondary": "#4A8C63",
+          "accent": "#D7E7A1"
+        },
+        "modules": [
+          "original_armor_shoulders_02",
+          "leaf_cape_01",
+          "energy_bracers_03"
+        ],
+        "powers": [
+          "electricity",
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "protective",
+          "curious",
+          "calm"
+        ],
+        "voiceProfileId": "voice_fictional_warm_01",
+        "assetManifestVersion": "1.0"
+      },
+      "parts": [
+        {
+          "id": "leg_l",
+          "shape": "capsule",
+          "position": [
+            -0.2016,
+            0.48600000000000004,
+            0
+          ],
+          "size": [
+            0.24640000000000004,
+            0.9720000000000001,
+            0.22
+          ],
+          "color": "#4A8C63"
+        },
+        {
+          "id": "leg_r",
+          "shape": "capsule",
+          "position": [
+            0.2016,
+            0.48600000000000004,
+            0
+          ],
+          "size": [
+            0.24640000000000004,
+            0.9720000000000001,
+            0.22
+          ],
+          "color": "#4A8C63"
+        },
+        {
+          "id": "torso",
+          "shape": "box",
+          "position": [
+            0.0,
+            1.3176,
+            0
+          ],
+          "size": [
+            0.7616000000000002,
+            0.7776000000000001,
+            0.38
+          ],
+          "color": "#245A75"
+        },
+        {
+          "id": "arm_l",
+          "shape": "capsule",
+          "position": [
+            -0.56,
+            1.2744,
+            0
+          ],
+          "size": [
+            0.2016,
+            0.7992,
+            0.18
+          ],
+          "color": "#245A75"
+        },
+        {
+          "id": "arm_r",
+          "shape": "capsule",
+          "position": [
+            0.56,
+            1.2744,
+            0
+          ],
+          "size": [
+            0.2016,
+            0.7992,
+            0.18
+          ],
+          "color": "#245A75"
+        },
+        {
+          "id": "head",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            1.9980000000000002,
+            0.0
+          ],
+          "size": [
+            0.48,
+            0.52,
+            0.48
+          ],
+          "color": "#E9C9A8"
+        },
+        {
+          "id": "eye_l",
+          "shape": "sphere",
+          "position": [
+            -0.1,
+            2.028,
+            0.22
+          ],
+          "size": [
+            0.08,
+            0.09,
+            0.05
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "eye_r",
+          "shape": "sphere",
+          "position": [
+            0.1,
+            2.028,
+            0.22
+          ],
+          "size": [
+            0.08,
+            0.09,
+            0.05
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "original_armor_shoulders_02.plate.l",
+          "shape": "sphere",
+          "position": [
+            -0.47040000000000004,
+            1.62,
+            0
+          ],
+          "size": [
+            0.336,
+            0.19440000000000002,
+            0.34
+          ],
+          "color": "#D7E7A1"
+        },
+        {
+          "id": "original_armor_shoulders_02.plate.r",
+          "shape": "sphere",
+          "position": [
+            0.47040000000000004,
+            1.62,
+            0
+          ],
+          "size": [
+            0.336,
+            0.19440000000000002,
+            0.34
+          ],
+          "color": "#D7E7A1"
+        },
+        {
+          "id": "leaf_cape_01.cape",
+          "shape": "box",
+          "position": [
+            0.0,
+            1.1880000000000002,
+            -0.24
+          ],
+          "size": [
+            0.6944,
+            1.026,
+            0.05
+          ],
+          "color": "#4A8C63"
+        },
+        {
+          "id": "energy_bracers_03.bracer.l",
+          "shape": "cylinder",
+          "position": [
+            -0.56,
+            1.08,
+            0
+          ],
+          "size": [
+            0.24640000000000004,
+            0.21600000000000003,
+            0.22
+          ],
+          "color": "#D7E7A1"
+        },
+        {
+          "id": "energy_bracers_03.bracer.r",
+          "shape": "cylinder",
+          "position": [
+            0.56,
+            1.08,
+            0
+          ],
+          "size": [
+            0.24640000000000004,
+            0.21600000000000003,
+            0.22
+          ],
+          "color": "#D7E7A1"
+        }
+      ]
+    },
+    {
+      "templateId": "tmpl_nova_sprocket",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Nova Sprocket",
+        "category": "robot",
+        "baseModelId": "mech_base_01",
+        "style": "neon_lowpoly",
+        "proportions": {
+          "height": 0.95,
+          "shoulderWidth": 1.05,
+          "headScale": 1.1
+        },
+        "palette": {
+          "primary": "#E4572E",
+          "secondary": "#29335C",
+          "accent": "#F3A712"
+        },
+        "modules": [
+          "star_visor_01",
+          "jet_pack_01",
+          "tread_boots_01"
+        ],
+        "powers": [
+          "force_field",
+          "gadgetry"
+        ],
+        "personalityTraits": [
+          "cheerful",
+          "brave"
+        ],
+        "voiceProfileId": "voice_fictional_robotic_04",
+        "assetManifestVersion": "1.0"
+      },
+      "parts": [
+        {
+          "id": "leg_l",
+          "shape": "cylinder",
+          "position": [
+            -0.21000000000000002,
+            0.39899999999999997,
+            0
+          ],
+          "size": [
+            0.252,
+            0.7979999999999999,
+            0.24
+          ],
+          "color": "#29335C"
+        },
+        {
+          "id": "leg_r",
+          "shape": "cylinder",
+          "position": [
+            0.21000000000000002,
+            0.39899999999999997,
+            0
+          ],
+          "size": [
+            0.252,
+            0.7979999999999999,
+            0.24
+          ],
+          "color": "#29335C"
+        },
+        {
+          "id": "torso",
+          "shape": "box",
+          "position": [
+            0.0,
+            1.121,
+            0
+          ],
+          "size": [
+            0.8400000000000001,
+            0.6649999999999999,
+            0.44
+          ],
+          "color": "#E4572E"
+        },
+        {
+          "id": "core",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            1.14,
+            0.22
+          ],
+          "size": [
+            0.189,
+            0.17099999999999999,
+            0.06
+          ],
+          "color": "#F3A712"
+        },
+        {
+          "id": "arm_l",
+          "shape": "cylinder",
+          "position": [
+            -0.5880000000000001,
+            1.064,
+            0
+          ],
+          "size": [
+            0.189,
+            0.6649999999999999,
+            0.18
+          ],
+          "color": "#C9D1DB"
+        },
+        {
+          "id": "arm_r",
+          "shape": "cylinder",
+          "position": [
+            0.5880000000000001,
+            1.064,
+            0
+          ],
+          "size": [
+            0.189,
+            0.6649999999999999,
+            0.18
+          ],
+          "color": "#C9D1DB"
+        },
+        {
+          "id": "head",
+          "shape": "box",
+          "position": [
+            0.0,
+            1.6909999999999998,
+            0.0
+          ],
+          "size": [
+            0.55,
+            0.44000000000000006,
+            0.44000000000000006
+          ],
+          "color": "#C9D1DB"
+        },
+        {
+          "id": "eye_l",
+          "shape": "box",
+          "position": [
+            -0.12100000000000001,
+            1.7129999999999999,
+            0.22000000000000003
+          ],
+          "size": [
+            0.11000000000000001,
+            0.066,
+            0.033
+          ],
+          "color": "#F3A712"
+        },
+        {
+          "id": "eye_r",
+          "shape": "box",
+          "position": [
+            0.12100000000000001,
+            1.7129999999999999,
+            0.22000000000000003
+          ],
+          "size": [
+            0.11000000000000001,
+            0.066,
+            0.033
+          ],
+          "color": "#F3A712"
+        },
+        {
+          "id": "star_visor_01.visor",
+          "shape": "box",
+          "position": [
+            0.0,
+            1.7129999999999999,
+            0.253
+          ],
+          "size": [
+            0.44000000000000006,
+            0.11000000000000001,
+            0.05500000000000001
+          ],
+          "color": "#7FD8FF"
+        },
+        {
+          "id": "jet_pack_01.tank.l",
+          "shape": "cylinder",
+          "position": [
+            -0.126,
+            1.14,
+            -0.32
+          ],
+          "size": [
+            0.189,
+            0.475,
+            0.18
+          ],
+          "color": "#F3A712"
+        },
+        {
+          "id": "jet_pack_01.tank.r",
+          "shape": "cylinder",
+          "position": [
+            0.126,
+            1.14,
+            -0.32
+          ],
+          "size": [
+            0.189,
+            0.475,
+            0.18
+          ],
+          "color": "#F3A712"
+        },
+        {
+          "id": "tread_boots_01.boot.l",
+          "shape": "box",
+          "position": [
+            -0.21000000000000002,
+            0.095,
+            0.04
+          ],
+          "size": [
+            0.29400000000000004,
+            0.19,
+            0.36
+          ],
+          "color": "#F3A712"
+        },
+        {
+          "id": "tread_boots_01.boot.r",
+          "shape": "box",
+          "position": [
+            0.21000000000000002,
+            0.095,
+            0.04
+          ],
+          "size": [
+            0.29400000000000004,
+            0.19,
+            0.36
+          ],
+          "color": "#F3A712"
+        }
+      ]
+    },
+    {
+      "templateId": "tmpl_mossy_pip",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Mossy Pip",
+        "category": "cartoon",
+        "baseModelId": "critter_base_01",
+        "style": "toon_soft",
+        "proportions": {
+          "height": 0.9,
+          "shoulderWidth": 1.0,
+          "headScale": 1.2
+        },
+        "palette": {
+          "primary": "#7FB069",
+          "secondary": "#E6AA68",
+          "accent": "#FFF1D0"
+        },
+        "modules": [
+          "leaf_cape_01",
+          "antenna_pair_01"
+        ],
+        "powers": [
+          "plant_growth"
+        ],
+        "personalityTraits": [
+          "playful",
+          "shy",
+          "kind"
+        ],
+        "voiceProfileId": "voice_fictional_squeaky_05",
+        "assetManifestVersion": "1.0"
+      },
+      "parts": [
+        {
+          "id": "foot_l",
+          "shape": "sphere",
+          "position": [
+            -0.15,
+            0.07200000000000001,
+            0.06
+          ],
+          "size": [
+            0.2,
+            0.12600000000000003,
+            0.26
+          ],
+          "color": "#E6AA68"
+        },
+        {
+          "id": "foot_r",
+          "shape": "sphere",
+          "position": [
+            0.15,
+            0.07200000000000001,
+            0.06
+          ],
+          "size": [
+            0.2,
+            0.12600000000000003,
+            0.26
+          ],
+          "color": "#E6AA68"
+        },
+        {
+          "id": "body",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            0.405,
+            0
+          ],
+          "size": [
+            0.62,
+            0.5940000000000001,
+            0.56
+          ],
+          "color": "#7FB069"
+        },
+        {
+          "id": "belly",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            0.378,
+            0.18
+          ],
+          "size": [
+            0.38,
+            0.378,
+            0.24
+          ],
+          "color": "#FFF1D0"
+        },
+        {
+          "id": "paw_l",
+          "shape": "sphere",
+          "position": [
+            -0.32,
+            0.45,
+            0.08
+          ],
+          "size": [
+            0.14,
+            0.162,
+            0.14
+          ],
+          "color": "#7FB069"
+        },
+        {
+          "id": "paw_r",
+          "shape": "sphere",
+          "position": [
+            0.32,
+            0.45,
+            0.08
+          ],
+          "size": [
+            0.14,
+            0.162,
+            0.14
+          ],
+          "color": "#7FB069"
+        },
+        {
+          "id": "head",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            0.9450000000000001,
+            0.05
+          ],
+          "size": [
+            0.792,
+            0.72,
+            0.72
+          ],
+          "color": "#7FB069"
+        },
+        {
+          "id": "ear_l",
+          "shape": "cone",
+          "position": [
+            -0.264,
+            1.3409999999999997,
+            -0.009999999999999995
+          ],
+          "size": [
+            0.192,
+            0.312,
+            0.144
+          ],
+          "color": "#E6AA68"
+        },
+        {
+          "id": "ear_r",
+          "shape": "cone",
+          "position": [
+            0.264,
+            1.3409999999999997,
+            -0.009999999999999995
+          ],
+          "size": [
+            0.192,
+            0.312,
+            0.144
+          ],
+          "color": "#E6AA68"
+        },
+        {
+          "id": "eye_l",
+          "shape": "sphere",
+          "position": [
+            -0.156,
+            1.0050000000000001,
+            0.374
+          ],
+          "size": [
+            0.144,
+            0.168,
+            0.06
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "eye_r",
+          "shape": "sphere",
+          "position": [
+            0.156,
+            1.0050000000000001,
+            0.374
+          ],
+          "size": [
+            0.144,
+            0.168,
+            0.06
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "leaf_cape_01.cape",
+          "shape": "box",
+          "position": [
+            0.0,
+            0.40499999999999997,
+            -0.3
+          ],
+          "size": [
+            0.62,
+            0.855,
+            0.05
+          ],
+          "color": "#E6AA68"
+        },
+        {
+          "id": "antenna_pair_01.stalk.l",
+          "shape": "cylinder",
+          "position": [
+            -0.144,
+            1.4849999999999999,
+            -0.009999999999999995
+          ],
+          "size": [
+            0.036,
+            0.24,
+            0.036
+          ],
+          "color": "#E6AA68"
+        },
+        {
+          "id": "antenna_pair_01.stalk.r",
+          "shape": "cylinder",
+          "position": [
+            0.144,
+            1.4849999999999999,
+            -0.009999999999999995
+          ],
+          "size": [
+            0.036,
+            0.24,
+            0.036
+          ],
+          "color": "#E6AA68"
+        },
+        {
+          "id": "antenna_pair_01.bobble.l",
+          "shape": "sphere",
+          "position": [
+            -0.144,
+            1.629,
+            -0.009999999999999995
+          ],
+          "size": [
+            0.108,
+            0.108,
+            0.108
+          ],
+          "color": "#FFF1D0"
+        },
+        {
+          "id": "antenna_pair_01.bobble.r",
+          "shape": "sphere",
+          "position": [
+            0.144,
+            1.629,
+            -0.009999999999999995
+          ],
+          "size": [
+            0.108,
+            0.108,
+            0.108
+          ],
+          "color": "#FFF1D0"
+        }
+      ]
+    },
+    {
+      "templateId": "tmpl_grimble",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Grimble Gloomcoat",
+        "category": "villain",
+        "baseModelId": "humanoid_toon_02",
+        "style": "clay_matte",
+        "proportions": {
+          "height": 0.92,
+          "shoulderWidth": 1.2,
+          "headScale": 1.15
+        },
+        "palette": {
+          "primary": "#4B3F72",
+          "secondary": "#1F2041",
+          "accent": "#FFC857"
+        },
+        "modules": [
+          "crystal_horns_01",
+          "explorer_scarf_01"
+        ],
+        "powers": [
+          "shape_shift",
+          "invisibility"
+        ],
+        "personalityTraits": [
+          "grumpy",
+          "cunning",
+          "dramatic"
+        ],
+        "voiceProfileId": "voice_fictional_deep_03",
+        "assetManifestVersion": "1.0"
+      },
+      "parts": [
+        {
+          "id": "leg_l",
+          "shape": "capsule",
+          "position": [
+            -0.192,
+            0.276,
+            0
+          ],
+          "size": [
+            0.264,
+            0.552,
+            0.22
+          ],
+          "color": "#1F2041"
+        },
+        {
+          "id": "leg_r",
+          "shape": "capsule",
+          "position": [
+            0.192,
+            0.276,
+            0
+          ],
+          "size": [
+            0.264,
+            0.552,
+            0.22
+          ],
+          "color": "#1F2041"
+        },
+        {
+          "id": "torso",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            0.8096,
+            0
+          ],
+          "size": [
+            0.768,
+            0.6072000000000001,
+            0.46
+          ],
+          "color": "#4B3F72"
+        },
+        {
+          "id": "arm_l",
+          "shape": "capsule",
+          "position": [
+            -0.528,
+            0.7912,
+            0
+          ],
+          "size": [
+            0.192,
+            0.5152000000000001,
+            0.16
+          ],
+          "color": "#4B3F72"
+        },
+        {
+          "id": "arm_r",
+          "shape": "capsule",
+          "position": [
+            0.528,
+            0.7912,
+            0
+          ],
+          "size": [
+            0.192,
+            0.5152000000000001,
+            0.16
+          ],
+          "color": "#4B3F72"
+        },
+        {
+          "id": "head",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            1.4260000000000002,
+            0.0
+          ],
+          "size": [
+            0.828,
+            0.8049999999999999,
+            0.782
+          ],
+          "color": "#F2D0B5"
+        },
+        {
+          "id": "eye_l",
+          "shape": "sphere",
+          "position": [
+            -0.161,
+            1.4835000000000003,
+            0.3565
+          ],
+          "size": [
+            0.13799999999999998,
+            0.1725,
+            0.06899999999999999
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "eye_r",
+          "shape": "sphere",
+          "position": [
+            0.161,
+            1.4835000000000003,
+            0.3565
+          ],
+          "size": [
+            0.13799999999999998,
+            0.1725,
+            0.06899999999999999
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "crystal_horns_01.horn.l",
+          "shape": "cone",
+          "position": [
+            -0.161,
+            1.8975,
+            0.0
+          ],
+          "size": [
+            0.11499999999999999,
+            0.27599999999999997,
+            0.11499999999999999
+          ],
+          "color": "#B39CD0"
+        },
+        {
+          "id": "crystal_horns_01.horn.r",
+          "shape": "cone",
+          "position": [
+            0.161,
+            1.8975,
+            0.0
+          ],
+          "size": [
+            0.11499999999999999,
+            0.27599999999999997,
+            0.11499999999999999
+          ],
+          "color": "#B39CD0"
+        },
+        {
+          "id": "explorer_scarf_01.scarf",
+          "shape": "cylinder",
+          "position": [
+            0.0,
+            1.104,
+            0.05
+          ],
+          "size": [
+            0.48,
+            0.09200000000000001,
+            0.34
+          ],
+          "color": "#FFC857"
+        }
+      ]
+    },
+    {
+      "templateId": "tmpl_zibba",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Zibba Orbling",
+        "category": "alien",
+        "baseModelId": "alien_base_01",
+        "style": "toon_soft",
+        "proportions": {
+          "height": 0.85,
+          "shoulderWidth": 0.9,
+          "headScale": 1.25
+        },
+        "palette": {
+          "primary": "#3BCEAC",
+          "secondary": "#540D6E",
+          "accent": "#EE4266"
+        },
+        "modules": [
+          "antenna_pair_01",
+          "star_visor_01"
+        ],
+        "powers": [
+          "time_slow",
+          "electricity"
+        ],
+        "personalityTraits": [
+          "curious",
+          "mischievous"
+        ],
+        "voiceProfileId": "voice_fictional_bright_02",
+        "assetManifestVersion": "1.0"
+      },
+      "parts": [
+        {
+          "id": "leg_l",
+          "shape": "capsule",
+          "position": [
+            -0.117,
+            0.272,
+            0
+          ],
+          "size": [
+            0.12600000000000003,
+            0.544,
+            0.14
+          ],
+          "color": "#540D6E"
+        },
+        {
+          "id": "leg_r",
+          "shape": "capsule",
+          "position": [
+            0.117,
+            0.272,
+            0
+          ],
+          "size": [
+            0.12600000000000003,
+            0.544,
+            0.14
+          ],
+          "color": "#540D6E"
+        },
+        {
+          "id": "torso",
+          "shape": "capsule",
+          "position": [
+            0.0,
+            0.782,
+            0
+          ],
+          "size": [
+            0.378,
+            0.527,
+            0.3
+          ],
+          "color": "#3BCEAC"
+        },
+        {
+          "id": "arm_l",
+          "shape": "capsule",
+          "position": [
+            -0.28800000000000003,
+            0.731,
+            0
+          ],
+          "size": [
+            0.108,
+            0.51,
+            0.12
+          ],
+          "color": "#3BCEAC"
+        },
+        {
+          "id": "arm_r",
+          "shape": "capsule",
+          "position": [
+            0.28800000000000003,
+            0.731,
+            0
+          ],
+          "size": [
+            0.108,
+            0.51,
+            0.12
+          ],
+          "color": "#3BCEAC"
+        },
+        {
+          "id": "head",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            1.377,
+            0.0
+          ],
+          "size": [
+            1.025,
+            0.925,
+            0.925
+          ],
+          "color": "#3BCEAC"
+        },
+        {
+          "id": "eye_l",
+          "shape": "sphere",
+          "position": [
+            -0.25,
+            1.4019999999999997,
+            0.41250000000000003
+          ],
+          "size": [
+            0.17500000000000002,
+            0.22499999999999998,
+            0.075
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "eye_m",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            1.5519999999999998,
+            0.44999999999999996
+          ],
+          "size": [
+            0.15,
+            0.1875,
+            0.075
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "eye_r",
+          "shape": "sphere",
+          "position": [
+            0.25,
+            1.4019999999999997,
+            0.41250000000000003
+          ],
+          "size": [
+            0.17500000000000002,
+            0.22499999999999998,
+            0.075
+          ],
+          "color": "#1B1B2F"
+        },
+        {
+          "id": "antenna_pair_01.stalk.l",
+          "shape": "cylinder",
+          "position": [
+            -0.15,
+            2.0145,
+            0.0
+          ],
+          "size": [
+            0.0375,
+            0.25,
+            0.0375
+          ],
+          "color": "#540D6E"
+        },
+        {
+          "id": "antenna_pair_01.stalk.r",
+          "shape": "cylinder",
+          "position": [
+            0.15,
+            2.0145,
+            0.0
+          ],
+          "size": [
+            0.0375,
+            0.25,
+            0.0375
+          ],
+          "color": "#540D6E"
+        },
+        {
+          "id": "antenna_pair_01.bobble.l",
+          "shape": "sphere",
+          "position": [
+            -0.15,
+            2.1645,
+            0.0
+          ],
+          "size": [
+            0.11249999999999999,
+            0.11249999999999999,
+            0.11249999999999999
+          ],
+          "color": "#EE4266"
+        },
+        {
+          "id": "antenna_pair_01.bobble.r",
+          "shape": "sphere",
+          "position": [
+            0.15,
+            2.1645,
+            0.0
+          ],
+          "size": [
+            0.11249999999999999,
+            0.11249999999999999,
+            0.11249999999999999
+          ],
+          "color": "#EE4266"
+        },
+        {
+          "id": "star_visor_01.visor",
+          "shape": "box",
+          "position": [
+            0.0,
+            1.4269999999999998,
+            0.5
+          ],
+          "size": [
+            0.5,
+            0.125,
+            0.0625
+          ],
+          "color": "#7FD8FF"
+        }
+      ]
+    },
+    {
+      "templateId": "tmpl_ember_ridgeback",
+      "recipe": {
+        "schemaVersion": 1,
+        "name": "Ember Ridgeback",
+        "category": "creature",
+        "baseModelId": "creature_base_01",
+        "style": "stylized_cinematic",
+        "proportions": {
+          "height": 1.0,
+          "shoulderWidth": 1.1,
+          "headScale": 0.95
+        },
+        "palette": {
+          "primary": "#C44536",
+          "secondary": "#772E25",
+          "accent": "#EDDDD4"
+        },
+        "modules": [
+          "crystal_horns_01",
+          "spike_tail_01"
+        ],
+        "powers": [
+          "fire_breath",
+          "sonic_roar"
+        ],
+        "personalityTraits": [
+          "loyal",
+          "stubborn",
+          "brave"
+        ],
+        "voiceProfileId": "voice_fictional_deep_03",
+        "assetManifestVersion": "1.0"
+      },
+      "parts": [
+        {
+          "id": "leg_fl",
+          "shape": "cylinder",
+          "position": [
+            -0.33,
+            0.3,
+            0.35
+          ],
+          "size": [
+            0.22000000000000003,
+            0.6,
+            0.2
+          ],
+          "color": "#772E25"
+        },
+        {
+          "id": "leg_fr",
+          "shape": "cylinder",
+          "position": [
+            0.33,
+            0.3,
+            0.35
+          ],
+          "size": [
+            0.22000000000000003,
+            0.6,
+            0.2
+          ],
+          "color": "#772E25"
+        },
+        {
+          "id": "leg_bl",
+          "shape": "cylinder",
+          "position": [
+            -0.33,
+            0.3,
+            -0.4
+          ],
+          "size": [
+            0.24200000000000002,
+            0.6,
+            0.22
+          ],
+          "color": "#772E25"
+        },
+        {
+          "id": "leg_br",
+          "shape": "cylinder",
+          "position": [
+            0.33,
+            0.3,
+            -0.4
+          ],
+          "size": [
+            0.24200000000000002,
+            0.6,
+            0.22
+          ],
+          "color": "#772E25"
+        },
+        {
+          "id": "body",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            0.78,
+            0
+          ],
+          "size": [
+            0.8800000000000001,
+            0.6,
+            1.2
+          ],
+          "color": "#C44536"
+        },
+        {
+          "id": "head",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            1.05,
+            0.55
+          ],
+          "size": [
+            0.532,
+            0.475,
+            0.57
+          ],
+          "color": "#C44536"
+        },
+        {
+          "id": "snout",
+          "shape": "sphere",
+          "position": [
+            0.0,
+            0.9835,
+            0.8065
+          ],
+          "size": [
+            0.285,
+            0.209,
+            0.247
+          ],
+          "color": "#EDDDD4"
+        },
+        {
+          "id": "eye_l",
+          "shape": "sphere",
+          "position": [
+            -0.133,
+            1.1355,
+            0.7875000000000001
+          ],
+          "size": [
+            0.08549999999999999,
+            0.095,
+            0.0475
+          ],
+          "color": "#FFC857"
+        },
+        {
+          "id": "eye_r",
+          "shape": "sphere",
+          "position": [
+            0.133,
+            1.1355,
+            0.7875000000000001
+          ],
+          "size": [
+            0.08549999999999999,
+            0.095,
+            0.0475
+          ],
+          "color": "#FFC857"
+        },
+        {
+          "id": "crystal_horns_01.horn.l",
+          "shape": "cone",
+          "position": [
+            -0.133,
+            1.4015,
+            0.5025
+          ],
+          "size": [
+            0.095,
+            0.22799999999999998,
+            0.095
+          ],
+          "color": "#B39CD0"
+        },
+        {
+          "id": "crystal_horns_01.horn.r",
+          "shape": "cone",
+          "position": [
+            0.133,
+            1.4015,
+            0.5025
+          ],
+          "size": [
+            0.095,
+            0.22799999999999998,
+            0.095
+          ],
+          "color": "#B39CD0"
+        },
+        {
+          "id": "spike_tail_01.tail",
+          "shape": "cone",
+          "position": [
+            0.0,
+            0.75,
+            -0.85
+          ],
+          "size": [
+            0.22000000000000003,
+            0.2,
+            0.6
+          ],
+          "color": "#772E25"
+        }
+      ]
+    }
+  ]
+}
