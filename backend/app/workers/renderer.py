@@ -35,6 +35,37 @@ RESOLUTIONS = {
 }
 
 
+MAX_MOTION_LIFT = 0.75  # highest dy any motion profile produces (soar: 0.6 + 0.1), in character units
+FEET_Y = 0.86
+TOP_SAFE = 0.15  # top band reserved for subtitles
+
+
+def character_unit(parts: list[dict[str, Any]], width: int, height: int, zoom: float, scale: float) -> float:
+    """Pixels per character unit for a camera preset, clamped so the head (plus any jump/flight lift) stays below
+    the subtitle band and the character never fills more than ~45% of the frame width (plan §14.4)."""
+    top = max(p["position"][1] + p["size"][1] / 2 for p in parts)
+    half_width = max(abs(p["position"][0]) + p["size"][0] / 2 for p in parts)
+    wanted = height * 0.36 * zoom * scale
+    fit_height = height * (FEET_Y - TOP_SAFE) / (top + MAX_MOTION_LIFT)
+    fit_width = width * 0.45 / (2 * half_width)
+    return min(wanted, fit_height, fit_width)
+
+
+def wrap_subtitle(text: str, font: Any, max_width: float) -> list[str]:
+    lines: list[str] = []
+    current = ""
+    for word in text.split(" "):
+        candidate = f"{current} {word}".strip()
+        if current and font.getlength(candidate) > max_width:
+            lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    return lines
+
+
 class TransientRenderError(Exception):
     code = "RENDER_TRANSIENT"
 
@@ -170,6 +201,7 @@ class ProceduralRenderer:
                 raise RenderCancelled()
             on_scene(si, n_scenes)
             bg = self._background(plan, scene)
+            shadow = tuple(int(c * 0.6) for c in hex_rgb(plan.catalog_data[scene["environmentId"]]["ground"]))
             light = hex_rgb(plan.catalog_data[scene["lightingPresetId"]]["tint"])
             zoom = plan.catalog_data[scene["cameraPresetId"]]["zoom"]
             dur = scene["durationMs"] / 1000
@@ -184,11 +216,11 @@ class ProceduralRenderer:
                         continue
                     clip = plan.catalog_data.get(sc["actionId"], {"motion": "still"})
                     dx, dy, lean, flip = motion_offsets(clip["motion"], t, dur)
-                    unit = plan.height * 0.36 * zoom * sc["scale"]
-                    feet = (plan.width * SLOT_X[sc["position"]], plan.height * 0.86)
+                    unit = character_unit(parts, plan.width, plan.height, zoom, sc["scale"])
+                    feet = (plan.width * SLOT_X[sc["position"]], plan.height * FEET_Y)
                     draw.ellipse(
                         [feet[0] - unit * 0.4, feet[1] - unit * 0.06, feet[0] + unit * 0.4, feet[1] + unit * 0.06],
-                        fill=(0, 0, 0, 90),
+                        fill=shadow,
                     )
                     if sc["actionId"] in ("action_combo_01", "fly", "hover", "victory"):
                         for power in plan.character_powers.get(sc["characterId"], [])[:2]:
@@ -205,12 +237,23 @@ class ProceduralRenderer:
                     end = start + 1.2 + len(d["line"]) * 0.055
                     if start <= t <= end:
                         label = f"{plan.character_names.get(d['characterId'], '')}: {d['line']}"
-                        tw = draw.textlength(label, font=font)
-                        bw = min(plan.width * 0.92, tw + 32)
+                        lines = wrap_subtitle(label, font, plan.width * 0.92 - 32)
+                        if len(lines) > 2:
+                            lines = [lines[0], " ".join(lines[1:])]
+                            while font.getlength(lines[1] + "…") > plan.width * 0.92 - 32:
+                                lines[1] = lines[1][:-1]
+                            lines[1] += "…"
+                        tw = max(draw.textlength(x, font=font) for x in lines)
+                        bw = tw + 32
                         x0 = (plan.width - bw) / 2
-                        y0 = plan.height * 0.04
-                        draw.rounded_rectangle([x0, y0, x0 + bw, y0 + font.size * 1.9], radius=12, fill=(20, 16, 40))
-                        draw.text((x0 + 16, y0 + font.size * 0.45), label, font=font, fill=(255, 255, 255))
+                        y0 = plan.height * 0.02
+                        line_h = font.size * 1.25
+                        bh = line_h * len(lines) + font.size * 0.6
+                        draw.rounded_rectangle([x0, y0, x0 + bw, y0 + bh], radius=12, fill=(20, 16, 40))
+                        for li, text in enumerate(lines):
+                            draw.text(
+                                (x0 + 16, y0 + font.size * 0.3 + li * line_h), text, font=font, fill=(255, 255, 255)
+                            )
                 draw.text(
                     (12, plan.height - small.size * 1.6),
                     f"{si + 1}/{n_scenes}  {scene.get('title', '')}",

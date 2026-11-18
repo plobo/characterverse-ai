@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from datetime import UTC, datetime
+from pathlib import Path
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.engine import Engine
@@ -19,6 +20,8 @@ def utcnow() -> datetime:
 class Database:
     def __init__(self, url: str):
         connect_args = {"check_same_thread": False} if url.startswith("sqlite") else {}
+        if url.startswith("sqlite:///") and ":memory:" not in url:
+            Path(url.removeprefix("sqlite:///")).parent.mkdir(parents=True, exist_ok=True)
         self.engine: Engine = create_engine(url, connect_args=connect_args, future=True)
         if url.startswith("sqlite"):
 

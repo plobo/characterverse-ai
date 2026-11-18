@@ -148,13 +148,13 @@ struct StageSceneView: UIViewRepresentable {
         view.backgroundColor = UIColor(hex: env?.skyBottom ?? "#BFE3FF")
         view.accessibilityLabel = "Scene preview in \(env?.name ?? "environment") with \(scene.characters.count) characters"
         let root = SCNScene()
-        let ground = SCNNode(geometry: SCNBox(width: 14, height: 0.05, length: 6, chamferRadius: 0))
+        let ground = SCNNode(geometry: SCNBox(width: 40, height: 0.05, length: 40, chamferRadius: 0))
         ground.geometry?.firstMaterial?.diffuse.contents = UIColor(hex: env?.ground ?? "#8FA3B8")
         ground.position = SCNVector3(0, -0.03, 0)
         root.rootNode.addChildNode(ground)
-        let backdrop = SCNNode(geometry: SCNPlane(width: 16, height: 8))
+        let backdrop = SCNNode(geometry: SCNPlane(width: 40, height: 10))
         backdrop.geometry?.firstMaterial?.diffuse.contents = UIColor(hex: env?.skyTop ?? "#4A90D9")
-        backdrop.position = SCNVector3(0, 3.5, -3)
+        backdrop.position = SCNVector3(0, 3.5, -6)
         root.rootNode.addChildNode(backdrop)
         for sc in scene.characters {
             guard let c = store.character(sc.characterId) else { continue }

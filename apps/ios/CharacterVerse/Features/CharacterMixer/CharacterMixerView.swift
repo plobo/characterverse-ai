@@ -32,6 +32,7 @@ private struct MixerContent: View {
     @Bindable var vm: CharacterMixerViewModel
 
     var body: some View {
+        ScrollViewReader { proxy in
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 SectionHeader(title: "1. Pick 2–3 characters", subtitle: "Only characters you own can be mixed")
@@ -67,13 +68,19 @@ private struct MixerContent: View {
                         }
                     }
                 }
-                if let r = vm.result { preview(r) }
+                if let r = vm.result { preview(r).id("preview") }
                 ForEach(vm.warnings, id: \.self) { w in
                     Label(w, systemImage: "exclamationmark.triangle").font(.footnote).foregroundStyle(Theme.warning)
                 }
                 if let e = vm.errorMessage { ErrorBanner(message: e) }
             }
             .padding(16)
+        }
+        .onChange(of: vm.suggestions) {
+            #if DEBUG
+            if UserDefaults.standard.string(forKey: "cvScreen") == "mixer" { proxy.scrollTo("preview", anchor: .top) }
+            #endif
+        }
         }
         .background(Theme.background)
         .toolbar {
