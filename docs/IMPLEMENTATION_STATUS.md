@@ -6,7 +6,7 @@ _Last updated: 2026-11-18_
 | Suite | Command | Result |
 |---|---|---|
 | Backend (unit, API, worker, real MP4 render, migrations, contracts, framing) | `cd backend && pytest` | 163 passed |
-| iOS (golden parity, API decoding, view models, cache) | `xcodebuild test -scheme CharacterVerse` | 28 passed |
+| iOS (golden parity, API decoding, view models, cache) | `xcodebuild test -scheme CharacterVerse` | 26 passed |
 | Android (golden parity, API decoding, MockWebServer contract, mixer/creator logic) | `./gradlew testDebugUnitTest` | 28 passed |
 
 The same golden fixtures (recipe validation, fusion, assembly) pass on all three platforms.
