@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.CharacterVerse" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/cv_background</item>
+    </style>
+    <color name="cv_background">#F7F5FF</color>
+    <color name="cv_brand">#6C4DF6</color>
+</resources>
