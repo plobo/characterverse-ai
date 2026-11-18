@@ -4,7 +4,10 @@ import Foundation
 
 struct UserDTO: Codable, Sendable { var id: String; var displayName: String; var email: String?; var isGuest: Bool; var createdAt: Date }
 struct SessionRequestDTO: Codable, Sendable { var provider: String; var token: String?; var displayName: String? }
-struct SessionResponseDTO: Codable, Sendable { var accessToken: String; var tokenType: String; var expiresAt: Int; var user: UserDTO }
+struct SessionResponseDTO: Codable, Sendable {
+    var accessToken: String; var tokenType: String; var expiresAt: Int; var refreshToken: String; var refreshExpiresAt: Int; var user: UserDTO
+}
+struct RefreshRequestDTO: Codable, Sendable { var refreshToken: String }
 struct UsageDTO: Codable, Sendable { var characters: Int; var projects: Int; var renders: Int; var storageBytes: Int }
 
 struct LineageDTO: Codable, Sendable { var sourceCharacterId: String; var contributionWeight: Double; var mixDimension: String }

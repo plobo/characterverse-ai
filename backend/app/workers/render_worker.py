@@ -11,11 +11,13 @@ from typing import Any
 
 import imageio_ffmpeg
 from sqlalchemy import or_, update
+from sqlalchemy.orm.exc import ObjectDeletedError, StaleDataError
 
 from app.core.db import utcnow
-from app.domain.models import MediaAsset, RenderJob
+from app.domain.models import MediaAsset, RenderJob, User
 from app.services.assembly import assemble_parts
 from app.services.catalog import sha256_hex
+from app.services.recipes import recipe_issues
 from app.services.render import backoff_seconds
 from app.services.stories import storyboard_issues
 from app.workers.renderer import (
@@ -65,6 +67,8 @@ def build_plan(container: Any, settings: dict[str, Any]) -> RenderPlan:
     rigs, parts, names, voices, powers = {}, {}, {}, {}, {}
     for cid, info in settings["characters"].items():
         recipe = info["recipe"]
+        if recipe_issues(recipe, catalog, container.settings.shared_dir):  # licence may have been revoked since submit
+            raise PermanentRenderError("RECIPE_INVALID", f"{info['name']} uses assets that are no longer licensed")
         rigs[cid] = catalog.rig_of(recipe["baseModelId"]) or "humanoid_v1"
         parts[cid] = assemble_parts(recipe, catalog)
         names[cid] = info["name"]
@@ -100,7 +104,8 @@ def process_render_job(container: Any, job_id: uuid.UUID) -> str:
     if not claim(container, job_id):
         with container.db.session() as s:
             job = s.get(RenderJob, job_id)
-            if job and job.status == "queued" and job.cancel_requested:
+            dead = job and job.status == "processing" and job.lease_expires_at and job.lease_expires_at < utcnow()
+            if job and job.cancel_requested and (job.status == "queued" or dead):
                 job.status, job.progress_stage, job.completed_at = "cancelled", "cancelled", utcnow()
                 s.commit()
             return job.status if job else "missing"
@@ -114,16 +119,24 @@ def process_render_job(container: Any, job_id: uuid.UUID) -> str:
         def progress(stage: str, pct: int) -> None:
             job.progress_stage, job.progress_percent = stage, pct
             job.lease_expires_at = utcnow() + timedelta(seconds=container.settings.render_lease_seconds)
-            s.commit()
+            try:
+                s.commit()
+            except (StaleDataError, ObjectDeletedError) as exc:
+                s.rollback()
+                raise RenderCancelled() from exc
 
         def cancelled() -> bool:
-            s.refresh(job, ["cancel_requested"])
-            return bool(job.cancel_requested)
+            with container.db.session() as probe:  # independent read: the job or its owner may have been deleted
+                row = probe.get(RenderJob, job_id)
+                owner = probe.get(User, job.owner_user_id)
+                return row is None or bool(row.cancel_requested) or owner is None or owner.deleted_at is not None
 
         try:
             plan = build_plan(container, job.settings_json)
             renderer = make_renderer(container)
             mp4, thumb, duration_ms = renderer.render(plan, work, cancelled, progress)
+            if cancelled():
+                raise RenderCancelled()
             progress("uploading", 92)
             video_key = f"renders/{job.owner_user_id}/{job.id}/video.mp4"
             thumb_key = f"renders/{job.owner_user_id}/{job.id}/thumbnail.png"
@@ -148,11 +161,15 @@ def process_render_job(container: Any, job_id: uuid.UUID) -> str:
         except Exception as exc:  # noqa: BLE001 - unknown errors are treated as transient but bounded
             _handle_transient(container, job, exc)
         finally:
-            job.compute_ms = (job.compute_ms or 0) + int((time.monotonic() - started) * 1000)
-            s.commit()
             shutil.rmtree(work, ignore_errors=True)
-            status = job.status
-            retry_at = job.next_attempt_at if status == "queued" else None
+            try:
+                job.compute_ms = (job.compute_ms or 0) + int((time.monotonic() - started) * 1000)
+                s.commit()
+                status = job.status
+                retry_at = job.next_attempt_at if status == "queued" else None
+            except (StaleDataError, ObjectDeletedError):  # account deleted mid-render: nothing left to update
+                s.rollback()
+                return "deleted"
     if retry_at is not None and container.queue is not None:
         delay = max(0.0, (retry_at - utcnow()).total_seconds())
         container.queue.enqueue(job_id, delay=delay)

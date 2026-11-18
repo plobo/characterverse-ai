@@ -2,16 +2,16 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends, Request, Response
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.api.deps import audit, current_user, get_container, get_session
 from app.core.container import Container
 from app.core.errors import AppError
-from app.core.security import create_access_token
+from app.core.security import create_access_token, decode_access_token
 from app.domain.models import Character, MediaAsset, Project, RenderJob, User
-from app.schemas.api import SessionRequest, SessionResponse, UpdateMeRequest, UsageOut, UserOut
+from app.schemas.api import RefreshRequest, SessionRequest, SessionResponse, UpdateMeRequest, UsageOut, UserOut
 from app.services.export import delete_account, export_account
 
 router = APIRouter(prefix="/v1", tags=["auth"])
@@ -30,7 +30,10 @@ def user_out(u: User) -> UserOut:
 
 @router.post("/auth/session", response_model=SessionResponse, response_model_by_alias=True)
 def create_session(
-    body: SessionRequest, container: Container = Depends(get_container), session: Session = Depends(get_session)
+    body: SessionRequest,
+    request: Request,
+    container: Container = Depends(get_container),
+    session: Session = Depends(get_session),
 ) -> SessionResponse:
     """Exchange an identity-provider token for an API session.
 
@@ -38,6 +41,7 @@ def create_session(
     * `dev`: local/test only - `token` is used as the subject. Disabled in production.
     * `guest`: creates an anonymous account for local drafts.
     """
+    throttle_client(container, request)
     if body.provider == "oidc":
         verifier = container.extras.get("oidc_verifier")
         if verifier is None:
@@ -70,10 +74,37 @@ def create_session(
         session.flush()
         audit(session, user, "account.created", "user", user.id, provider=body.provider)
     session.commit()
-    token, exp = create_access_token(
-        user.id, container.settings.jwt_secret, container.settings.access_token_ttl_seconds
+    return issue_session(container, user)
+
+
+def throttle_client(container: Container, request: Request) -> None:
+    """Unauthenticated session creation is limited per client address (blocks guest-account quota farming)."""
+    client_key = request.client.host if request.client else "unknown"
+    container.rate_limiter.check(f"ip:{client_key}", "session", container.settings.rate_limit_sessions_per_minute)
+
+
+def issue_session(container: Container, user: User) -> SessionResponse:
+    st = container.settings
+    token, exp = create_access_token(user.id, st.jwt_secret, st.access_token_ttl_seconds)
+    refresh, rexp = create_access_token(user.id, st.jwt_secret, st.refresh_token_ttl_seconds, typ="refresh")
+    return SessionResponse(
+        access_token=token, expires_at=exp, refresh_token=refresh, refresh_expires_at=rexp, user=user_out(user)
     )
-    return SessionResponse(access_token=token, expires_at=exp, user=user_out(user))
+
+
+@router.post("/auth/refresh", response_model=SessionResponse)
+def refresh_session(
+    body: RefreshRequest,
+    request: Request,
+    container: Container = Depends(get_container),
+    session: Session = Depends(get_session),
+) -> SessionResponse:
+    """Exchange a long-lived refresh token for a new session (keeps guest accounts reachable)."""
+    throttle_client(container, request)
+    user = session.get(User, decode_access_token(body.refresh_token, container.settings.jwt_secret, typ="refresh"))
+    if user is None or user.deleted_at is not None:
+        raise AppError("AUTH_INVALID", "Account not found")
+    return issue_session(container, user)
 
 
 @router.get("/me", response_model=UserOut)

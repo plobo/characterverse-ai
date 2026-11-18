@@ -14,7 +14,7 @@ final class RemoteRepository: AccountRepository, CharacterRepository, MixReposit
     func signIn(provider: String, token: String?, displayName: String?) async throws -> UserDTO {
         let res: SessionResponseDTO = try await api.send("POST", "v1/auth/session",
                                                          body: SessionRequestDTO(provider: provider, token: token, displayName: displayName))
-        await tokens.save(res.accessToken)
+        await tokens.save(access: res.accessToken, refresh: res.refreshToken)
         return res.user
     }
     func signOut() async { await tokens.clear() }

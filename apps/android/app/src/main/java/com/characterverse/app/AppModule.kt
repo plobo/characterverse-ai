@@ -3,6 +3,7 @@ package com.characterverse.app
 import android.content.Context
 import androidx.room.Room
 import com.characterverse.BuildConfig
+import com.characterverse.core.auth.RefreshAuthenticator
 import com.characterverse.core.auth.TokenStore
 import com.characterverse.core.database.AppDatabase
 import com.characterverse.data.api.ApiService
@@ -50,6 +51,7 @@ object AppModule {
             tokens.tokenBlocking()?.let { req.header("Authorization", "Bearer $it") }
             chain.proceed(req.build())
         }
+        .authenticator(RefreshAuthenticator(tokens, BuildConfig.API_BASE_URL))
         .build()
 
     @Provides @Singleton

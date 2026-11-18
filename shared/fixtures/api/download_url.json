@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8000/v1/media/renders/7a67b1bc-6d74-428a-bde6-a70ab3812b38/18924abc-b313-4dbe-becc-0c1385750c77/video.mp4?exp=1794975934&sig=481d2d29401b7f3b759588bc99d593d37cc7d49e2400551f61a46674b40a13fc",
-  "thumbnailUrl": "http://localhost:8000/v1/media/renders/7a67b1bc-6d74-428a-bde6-a70ab3812b38/18924abc-b313-4dbe-becc-0c1385750c77/thumbnail.png?exp=1794975934&sig=c5a0221792e50fca19c642d2443a3a4fa7a6405535136c9f4fbae3ee5a1fd4bb",
-  "expiresAt": 1794975934,
+  "url": "http://localhost:8000/v1/media/renders/89c34499-0f91-4176-9ce2-54e2a049c9cf/c36ac1cd-1315-4091-a929-290937c4d2b6/video.mp4?exp=1794980423&sig=0df66a7c30f86ed9d363272074707612a0b31087f4711f83e713640d819d24ca",
+  "thumbnailUrl": "http://localhost:8000/v1/media/renders/89c34499-0f91-4176-9ce2-54e2a049c9cf/c36ac1cd-1315-4091-a929-290937c4d2b6/thumbnail.png?exp=1794980423&sig=059b33243b6d4a1026f9c4ad70946a6c48f8225207489c6701a710c68590852e",
+  "expiresAt": 1794980423,
   "mimeType": "video/mp4",
   "fileSize": 12
 }

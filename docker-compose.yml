@@ -22,6 +22,6 @@ services:
     env_file: infrastructure/local-dev/backend.env
     volumes: [storage:/srv/var]
     depends_on: [api, redis]
-    command: rq worker renders --url redis://redis:6379/0
+    command: rq worker renders --with-scheduler --url redis://redis:6379/0
     deploy: {resources: {limits: {cpus: "2", memory: 2g}}}
 volumes: {pgdata: {}, storage: {}}

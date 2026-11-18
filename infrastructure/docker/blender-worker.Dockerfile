@@ -16,4 +16,4 @@ COPY shared /srv/shared
 COPY backend /srv/backend
 COPY infrastructure/docker/blender /srv/infrastructure/docker/blender
 USER app
-CMD ["rq", "worker", "renders", "--url", "redis://redis:6379/0"]
+CMD ["rq", "worker", "renders", "--with-scheduler", "--url", "redis://redis:6379/0"]

@@ -6,7 +6,7 @@ import uuid
 from datetime import timedelta
 from typing import Any
 
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select, update
 from sqlalchemy.orm import Session
 
 from app.core.db import utcnow
@@ -68,6 +68,13 @@ def create_render_job(
             )
         )
     }
+    from app.services.recipes import recipe_issues
+
+    for c in chars.values():
+        if recipe_issues(c.recipe_json, container.catalog, container.settings.shared_dir):
+            raise AppError(
+                "RECIPE_INVALID", f"{c.name} uses assets that are no longer licensed; edit the character first"
+            )
     width, height = RESOLUTIONS[(quality, aspect)]
     settings = {
         "quality": quality,
@@ -93,15 +100,31 @@ def create_render_job(
 
 
 def cancel_job(session: Session, job: RenderJob) -> RenderJob:
-    if job.status == "queued":
-        job.status = "cancelled"
-        job.progress_stage = "cancelled"
-        job.completed_at = utcnow()
-    elif job.status == "processing":
-        job.cancel_requested = True
-    else:
-        raise AppError("RENDER_NOT_CANCELLABLE", f"A {job.status} job cannot be cancelled")
+    """Conditional updates only: a worker may claim the job between our read and our write."""
+    now = utcnow()
+    dead = (RenderJob.status == "processing") & (RenderJob.lease_expires_at < now)
+    done = session.execute(
+        update(RenderJob)
+        .where(RenderJob.id == job.id, or_(RenderJob.status == "queued", dead))
+        .values(
+            status="cancelled",
+            progress_stage="cancelled",
+            completed_at=now,
+            lease_expires_at=None,
+            cancel_requested=True,
+        )
+    ).rowcount
+    if not done:
+        requested = session.execute(
+            update(RenderJob)
+            .where(RenderJob.id == job.id, RenderJob.status == "processing")
+            .values(cancel_requested=True)
+        ).rowcount
+        if not requested:
+            session.refresh(job)
+            raise AppError("RENDER_NOT_CANCELLABLE", f"A {job.status} job cannot be cancelled")
     session.commit()
+    session.refresh(job)
     return job
 
 

@@ -46,15 +46,33 @@ final class APIClient: Sendable {
         headers.forEach { request.setValue($1, forHTTPHeaderField: $0) }
 
         var attempt = 1
+        var refreshed = false
         while true {
             do {
                 return try await perform(request, as: Response.self)
+            } catch let error as APIError where error.code == "AUTH_INVALID" && !refreshed && !path.hasPrefix("v1/auth/") {
+                // Access tokens are short-lived; swap the refresh token for a new session once, then replay.
+                guard let newToken = try await refreshSession() else { throw error }
+                request.setValue("Bearer \(newToken)", forHTTPHeaderField: "Authorization")
+                refreshed = true
             } catch let error as APIError where error.isRetryable && attempt < retry.maxAttempts
                 && (method == "GET" || request.value(forHTTPHeaderField: "Idempotency-Key") != nil) {
                 try await Task.sleep(for: .seconds(retry.delay(forAttempt: attempt)))
                 attempt += 1
             }
         }
+    }
+
+    /// Returns the new access token, or nil when there is no refresh token (caller then signs the user out).
+    private func refreshSession() async throws -> String? {
+        guard let refresh = await tokens.refreshToken() else { return nil }
+        var request = URLRequest(url: baseURL.appending(path: "v1/auth/refresh"))
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try Self.encoder.encode(RefreshRequestDTO(refreshToken: refresh))
+        let session: SessionResponseDTO = try await perform(request, as: SessionResponseDTO.self)
+        await tokens.save(access: session.accessToken, refresh: session.refreshToken)
+        return session.accessToken
     }
 
     private func perform<Response: Decodable>(_ request: URLRequest, as: Response.Type) async throws -> Response {

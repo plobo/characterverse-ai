@@ -21,12 +21,16 @@ def create_app(settings: Settings | None = None, container: Container | None = N
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
-        from app.workers.queue import ThreadQueue, cleanup_expired_temp, recover_stranded_jobs
+        from app.workers.queue import InlineQueue, ThreadQueue, cleanup_expired_temp, start_sweeper, sweep_render_jobs
 
-        if isinstance(container.queue, ThreadQueue):
-            recover_stranded_jobs(container)
+        stop_sweeper = None
+        if not isinstance(container.queue, InlineQueue):
+            sweep_render_jobs(container)
             cleanup_expired_temp(container)
+            stop_sweeper = start_sweeper(container)
         yield
+        if stop_sweeper:
+            stop_sweeper.set()
         if isinstance(container.queue, ThreadQueue):
             container.queue.stop()
 

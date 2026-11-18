@@ -83,9 +83,15 @@ async def put_upload(
     asset = session.query(MediaAsset).filter_by(storage_key=key).one_or_none()
     if asset is None or asset.status != "pending_upload":
         raise AppError("UPLOAD_REJECTED", "Upload slot is not available")
-    data = await request.body()
-    if len(data) > min(asset.file_size, container.settings.max_upload_bytes):
-        raise AppError("UPLOAD_REJECTED", "File is larger than declared")
+    limit = min(asset.file_size, container.settings.max_upload_bytes)
+    chunks: list[bytes] = []
+    received = 0
+    async for chunk in request.stream():  # stop reading as soon as the declared size is exceeded
+        received += len(chunk)
+        if received > limit:
+            raise AppError("UPLOAD_REJECTED", "File is larger than declared")
+        chunks.append(chunk)
+    data = b"".join(chunks)
     if not any(data.startswith(m) for m in MAGIC[asset.mime_type]):
         raise AppError("UPLOAD_REJECTED", "File content does not match its declared type")
     container.storage.put(key, data)

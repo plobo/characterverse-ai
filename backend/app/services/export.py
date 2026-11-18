@@ -73,6 +73,8 @@ def delete_account(session: Session, storage: Any, user: User) -> None:
     records (stripped of user content) for the published retention period."""
     for media in session.scalars(select(MediaAsset).where(MediaAsset.owner_user_id == user.id)):
         storage.delete(media.storage_key)
+    storage.delete_prefix(f"users/{user.id}")  # previews + story drafts cache
+    storage.delete_prefix(f"renders/{user.id}")  # including outputs of renders still in flight
     char_ids = list(session.scalars(select(Character.id).where(Character.owner_user_id == user.id)))
     project_ids = list(session.scalars(select(Project.id).where(Project.owner_user_id == user.id)))
     session.execute(delete(CharacterLineage).where(CharacterLineage.character_id.in_(char_ids)))

@@ -54,6 +54,13 @@ class LocalObjectStorage:
         if path.exists():
             path.unlink()
 
+    def delete_prefix(self, prefix: str) -> None:
+        import shutil
+
+        path = self._path(prefix)
+        if path.is_dir():
+            shutil.rmtree(path, ignore_errors=True)
+
     # ---- signed URLs ---------------------------------------------------
     def _message(self, method: str, key: str, exp: int) -> str:
         return f"{method.upper()}\n{key}\n{exp}"

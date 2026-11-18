@@ -1,7 +1,7 @@
 {
   "storyboard": {
     "schemaVersion": 1,
-    "title": "Voltwood Guardian and the Sky Festival",
+    "title": "Voltwood Guardian and the Lost Spark",
     "logline": "Voltwood Guardian must find the glowing map with help from friends.",
     "synopsis": "In a uplifting adventure for everyone, Voltwood Guardian, Mossy Pip set out to find the glowing map. Along the way they discover that their different powers work best together.",
     "durationSeconds": 15,
@@ -9,12 +9,12 @@
     "language": "en",
     "characters": [
       {
-        "characterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+        "characterId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
         "displayName": "Voltwood Guardian",
         "role": "protagonist"
       },
       {
-        "characterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+        "characterId": "d549996b-f81f-4480-b752-95eb4c1628d6",
         "displayName": "Mossy Pip",
         "role": "sidekick"
       }
@@ -27,31 +27,31 @@
         "title": "Intro",
         "description": "Intro: Voltwood Guardian and friends find the glowing map.",
         "durationMs": 5000,
-        "environmentId": "env_moon_base_01",
+        "environmentId": "env_sky_city_01",
         "cameraPresetId": "cam_wide",
-        "lightingPresetId": "light_night_neon",
+        "lightingPresetId": "light_daylight",
         "characters": [
           {
-            "characterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+            "characterId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
             "position": "left",
             "scale": 1.0,
             "actionId": "talk"
           },
           {
-            "characterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+            "characterId": "d549996b-f81f-4480-b752-95eb4c1628d6",
             "position": "right",
             "scale": 1.0,
-            "actionId": "talk"
+            "actionId": "idle"
           }
         ],
         "dialogue": [
           {
-            "characterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+            "characterId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
             "line": "Hi, I'm Voltwood Guardian! Today we find the glowing map.",
             "startMs": 400
           },
           {
-            "characterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+            "characterId": "d549996b-f81f-4480-b752-95eb4c1628d6",
             "line": "Right behind you!",
             "startMs": 2500
           }
@@ -67,18 +67,18 @@
         "title": "Action",
         "description": "Action: Voltwood Guardian and friends find the glowing map.",
         "durationMs": 5000,
-        "environmentId": "env_cozy_village_01",
+        "environmentId": "env_crystal_forest_01",
         "cameraPresetId": "cam_low_hero",
-        "lightingPresetId": "light_night_neon",
+        "lightingPresetId": "light_daylight",
         "characters": [
           {
-            "characterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+            "characterId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
             "position": "left",
             "scale": 1.0,
-            "actionId": "action_combo_01"
+            "actionId": "run"
           },
           {
-            "characterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+            "characterId": "d549996b-f81f-4480-b752-95eb4c1628d6",
             "position": "right",
             "scale": 1.0,
             "actionId": "run"
@@ -86,12 +86,12 @@
         ],
         "dialogue": [
           {
-            "characterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+            "characterId": "d549996b-f81f-4480-b752-95eb4c1628d6",
             "line": "Stand back - time for some plant growth!",
             "startMs": 400
           },
           {
-            "characterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+            "characterId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
             "line": "Right behind you!",
             "startMs": 2500
           }
@@ -108,18 +108,18 @@
         "title": "Resolution",
         "description": "Resolution: Voltwood Guardian and friends find the glowing map.",
         "durationMs": 5000,
-        "environmentId": "env_moon_base_01",
+        "environmentId": "env_sky_city_01",
         "cameraPresetId": "cam_orbit",
-        "lightingPresetId": "light_night_neon",
+        "lightingPresetId": "light_daylight",
         "characters": [
           {
-            "characterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+            "characterId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
             "position": "left",
             "scale": 1.0,
             "actionId": "dance_loop_01"
           },
           {
-            "characterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+            "characterId": "d549996b-f81f-4480-b752-95eb4c1628d6",
             "position": "right",
             "scale": 1.0,
             "actionId": "victory"
@@ -127,12 +127,12 @@
         ],
         "dialogue": [
           {
-            "characterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+            "characterId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
             "line": "We did it! Being protective really paid off.",
             "startMs": 400
           },
           {
-            "characterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+            "characterId": "d549996b-f81f-4480-b752-95eb4c1628d6",
             "line": "Best team in the universe!",
             "startMs": 2500
           }

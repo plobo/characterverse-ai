@@ -136,7 +136,7 @@ def generate_story(
         }
         for c in cast
     ]
-    cache_key = f"stories/cache/{sha256_hex({'req': request, 'manifest': cat.manifest_version})}.json"
+    cache_key = f"users/{user.id}/stories/{sha256_hex({'req': request, 'manifest': cat.manifest_version})}.json"
     cached = container.storage.exists(cache_key)
     if cached:
         import json

@@ -44,13 +44,18 @@ class RemoteRepository @Inject constructor(
     override suspend fun restore(): Boolean {
         if (tokens.token() == null) return false
         return runCatching { _user.value = withRetry { api.me() }; true }.getOrElse {
-            if (it is com.characterverse.core.network.ApiError.Offline) { loadCachedCharacters(); true } else { tokens.clear(); false }
+            val err = com.characterverse.core.network.ApiError.from(it)
+            // Only an auth failure (after the authenticator's refresh attempt) ends the session; offline or server
+            // errors keep it, so a guest account is never abandoned.
+            if (err is com.characterverse.core.network.ApiError.Server && (err.code == "AUTH_INVALID" || err.code == "AUTH_REQUIRED")) {
+                tokens.clear(); false
+            } else { loadCachedCharacters(); true }
         }
     }
 
     override suspend fun signIn(provider: String, token: String?, displayName: String?): UserDto {
         val res = apiCall { api.session(SessionRequestDto(provider, token, displayName)) }
-        tokens.save(res.accessToken)
+        tokens.save(res.accessToken, res.refreshToken)
         _user.value = res.user
         return res.user
     }

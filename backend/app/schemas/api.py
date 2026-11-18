@@ -158,7 +158,13 @@ class SessionResponse(ApiModel):
     access_token: str
     token_type: str = "Bearer"
     expires_at: int
+    refresh_token: str
+    refresh_expires_at: int
     user: UserOut
+
+
+class RefreshRequest(ApiModel):
+    refresh_token: str = Field(min_length=1, max_length=4096)
 
 
 class UpdateMeRequest(ApiModel):

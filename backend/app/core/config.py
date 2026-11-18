@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     jwt_secret: str = _DEV_SECRET
     signing_secret: str = _DEV_SECRET + "-signing"
     access_token_ttl_seconds: int = 3600
+    refresh_token_ttl_seconds: int = 90 * 24 * 3600
     signed_url_ttl_seconds: int = 900
     public_base_url: str = "http://localhost:8000"
     shared_dir: Path = REPO_ROOT / "shared"
@@ -39,6 +40,8 @@ class Settings(BaseSettings):
     render_renderer: str = "procedural"  # procedural | blender
 
     rate_limit_generate_per_minute: int = 20
+    rate_limit_sessions_per_minute: int = 30
+    sweep_interval_seconds: int = 60
     max_active_renders_per_user: int = 3
     max_upload_bytes: int = 10 * 1024 * 1024
     temp_retention_hours: int = 24

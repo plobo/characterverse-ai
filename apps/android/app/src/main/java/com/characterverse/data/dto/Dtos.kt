@@ -12,7 +12,11 @@ import kotlinx.serialization.json.JsonElement
 
 @Serializable data class UserDto(val id: String, val displayName: String, val email: String? = null, val isGuest: Boolean, val createdAt: String)
 @Serializable data class SessionRequestDto(val provider: String, val token: String? = null, val displayName: String? = null)
-@Serializable data class SessionResponseDto(val accessToken: String, val tokenType: String, val expiresAt: Long, val user: UserDto)
+@Serializable
+data class SessionResponseDto(
+    val accessToken: String, val tokenType: String, val expiresAt: Long, val refreshToken: String, val refreshExpiresAt: Long, val user: UserDto,
+)
+@Serializable data class RefreshRequestDto(val refreshToken: String)
 @Serializable data class UsageDto(val characters: Int, val projects: Int, val renders: Int, val storageBytes: Long)
 
 @Serializable data class LineageDto(val sourceCharacterId: String, val contributionWeight: Double, val mixDimension: String)

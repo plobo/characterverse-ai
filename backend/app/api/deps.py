@@ -86,17 +86,21 @@ def moderate(
     content_id: str | None = None,
 ) -> ModerationResult:
     result = container.moderator.check(text)
-    session.add(
-        ModerationEvent(
-            user_id=user.id if user else None,
-            content_type=content_type,
-            content_id=content_id,
-            decision=result.decision,
-            reason_code=result.reason_code,
-            policy_version=result.policy_version,
-        )
+    event = ModerationEvent(
+        user_id=user.id if user else None,
+        content_type=content_type,
+        content_id=content_id,
+        decision=result.decision,
+        reason_code=result.reason_code,
+        policy_version=result.policy_version,
     )
-    session.commit()
+    if result.blocked:
+        # Discard the failing request's partial work, but keep the audit record of the decision.
+        session.rollback()
+        session.add(event)
+        session.commit()
+    else:
+        session.add(event)  # committed together with the request's own changes
     if result.blocked:
         raise AppError(
             "MODERATION_BLOCKED",

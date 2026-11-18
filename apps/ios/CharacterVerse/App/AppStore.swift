@@ -28,12 +28,14 @@ final class AppStore {
                 user = try await repo.me()
                 phase = .signedIn
                 await refreshAll()
-            } catch APIError.offline {
-                isOffline = true
-                phase = .signedIn
-            } catch {
+            } catch let error as APIError where error.code == "AUTH_INVALID" || error.code == "AUTH_REQUIRED" {
                 await repo.signOut()
                 phase = .signedOut
+            } catch {
+                // Offline or a server error: keep the session (and the guest account) and show cached state.
+                isOffline = (error as? APIError) == .offline
+                lastError = isOffline ? nil : error.localizedDescription
+                phase = .signedIn
             }
         } else {
             phase = .signedOut

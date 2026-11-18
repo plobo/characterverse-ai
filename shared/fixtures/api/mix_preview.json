@@ -37,7 +37,7 @@
   },
   "lineage": [
     {
-      "sourceCharacterId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+      "sourceCharacterId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
       "weight": 0.5,
       "dimensions": [
         "appearance",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "sourceCharacterId": "7bf521e5-3dfa-4fe3-b50d-b818b9160084",
+      "sourceCharacterId": "d549996b-f81f-4480-b752-95eb4c1628d6",
       "weight": 0.5,
       "dimensions": [
         "appearance",
@@ -74,7 +74,7 @@
       "message": "1 trait(s) could not be combined"
     }
   ],
-  "dominantSourceId": "f05d530c-2b50-421c-b491-f1a4fc6f41e4",
+  "dominantSourceId": "be6bd273-6a8c-43b4-b1c8-577047b65675",
   "suggestions": [
     {
       "name": "Voltwssy",

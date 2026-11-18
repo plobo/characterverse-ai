@@ -16,9 +16,11 @@ def recipe_hash(recipe: dict[str, Any]) -> str:
     return sha256_hex(canonical_json(recipe).encode())
 
 
-def ensure_preview(container: Any, session: Session, recipe: dict[str, Any]) -> dict[str, Any]:
+def ensure_preview(container: Any, session: Session, recipe: dict[str, Any], owner_id: Any = None) -> dict[str, Any]:
+    """User previews live under users/{id}/ (removed on account deletion); catalogue previews are shared."""
     h = recipe_hash(recipe)
-    glb_key, png_key = f"previews/{h}.glb", f"previews/{h}.png"
+    prefix = f"users/{owner_id}/previews" if owner_id else "catalog/previews"
+    glb_key, png_key = f"{prefix}/{h}.glb", f"{prefix}/{h}.png"
     storage = container.storage
     cached = storage.exists(glb_key) and storage.exists(png_key)
     if not cached:
@@ -31,7 +33,7 @@ def ensure_preview(container: Any, session: Session, recipe: dict[str, Any]) -> 
             if session.query(MediaAsset).filter_by(storage_key=key).one_or_none() is None:
                 session.add(
                     MediaAsset(
-                        owner_user_id=None,
+                        owner_user_id=owner_id,
                         asset_type="character_preview",
                         storage_key=key,
                         mime_type=mime,

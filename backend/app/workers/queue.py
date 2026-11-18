@@ -114,23 +114,46 @@ def build_queue(container: Any):
     return ThreadQueue(container)
 
 
-def recover_stranded_jobs(container: Any) -> list[uuid.UUID]:
-    """On worker start: re-deliver queued jobs and processing jobs whose lease expired (worker crash)."""
+def sweep_render_jobs(container: Any) -> list[uuid.UUID]:
+    """Lease sweeper — run at startup and periodically (any queue backend):
+    * processing + expired lease + cancel requested -> cancelled (the worker died mid-render)
+    * processing + expired lease -> re-delivered (worker crash, OOM, deploy, RQ timeout)
+    * queued -> re-delivered, honouring any backoff (next_attempt_at)
+    Duplicate deliveries are harmless because workers claim atomically."""
     now = utcnow()
     with container.db.session() as s:
-        ids = list(
-            s.scalars(
-                select(RenderJob.id).where(
-                    or_(
-                        RenderJob.status == "queued",
-                        (RenderJob.status == "processing") & (RenderJob.lease_expires_at < now),
-                    )
+        expired = (RenderJob.status == "processing") & (RenderJob.lease_expires_at < now)
+        for job in s.scalars(select(RenderJob).where(expired, RenderJob.cancel_requested.is_(True))):
+            job.status, job.progress_stage, job.completed_at, job.lease_expires_at = "cancelled", "cancelled", now, None
+        s.commit()
+        rows = list(
+            s.execute(
+                select(RenderJob.id, RenderJob.next_attempt_at).where(
+                    or_(RenderJob.status == "queued", expired), RenderJob.cancel_requested.is_(False)
                 )
             )
         )
-    for job_id in ids:
-        container.queue.enqueue(job_id)
-    return ids
+    for job_id, next_at in rows:
+        delay = max(0.0, (next_at - now).total_seconds()) if next_at else 0.0
+        container.queue.enqueue(job_id, delay=delay)
+    return [r[0] for r in rows]
+
+
+recover_stranded_jobs = sweep_render_jobs
+
+
+def start_sweeper(container: Any) -> threading.Event:
+    stop = threading.Event()
+
+    def loop() -> None:
+        while not stop.wait(container.settings.sweep_interval_seconds):
+            try:
+                sweep_render_jobs(container)
+            except Exception:  # pragma: no cover - logged and retried next tick
+                log.exception("render sweeper failed")
+
+    threading.Thread(target=loop, daemon=True, name="render-sweeper").start()
+    return stop
 
 
 def cleanup_expired_temp(container: Any) -> int:

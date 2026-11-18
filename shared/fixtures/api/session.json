@@ -1,13 +1,15 @@
 {
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3YTY3YjFiYy02ZDc0LTQyOGEtYmRlNi1hNzBhYjM4MTJiMzgiLCJpYXQiOjE3OTQ5NzUwMzQsImV4cCI6MTc5NDk3ODYzNCwidHlwIjoiYWNjZXNzIn0.LyKJacmpdTQUPaTHbitOLSU7-Zd-Ik1FuSFP9ORNgK8",
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4OWMzNDQ5OS0wZjkxLTQxNzYtOWNlMi01NGUyYTA0OWM5Y2YiLCJpYXQiOjE3OTQ5Nzk1MjIsImV4cCI6MTc5NDk4MzEyMiwidHlwIjoiYWNjZXNzIiwianRpIjoiZjQ4MDJkODFiNTg3NGZjMWIxYTRmNzRmNGYxZjIzNjYifQ.X9UI8ZMTHEiOuOgGumpYbfTJJu-aT_IQGCqJmGaRHYM",
   "tokenType": "Bearer",
-  "expiresAt": 1794978634,
+  "expiresAt": 1794983122,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4OWMzNDQ5OS0wZjkxLTQxNzYtOWNlMi01NGUyYTA0OWM5Y2YiLCJpYXQiOjE3OTQ5Nzk1MjIsImV4cCI6MTgwMjc1NTUyMiwidHlwIjoicmVmcmVzaCIsImp0aSI6IjA3YzdkZjJiYzdlMzQ5MzdhNmRmNmZhMzRjOThhZDRlIn0.ECqV91kw7BF_21W8lZjfAs-pczZGTCNrwuTysa9IosA",
+  "refreshExpiresAt": 1802755522,
   "user": {
-    "id": "7a67b1bc-6d74-428a-bde6-a70ab3812b38",
+    "id": "89c34499-0f91-4176-9ce2-54e2a049c9cf",
     "displayName": "Sam",
     "email": null,
     "isGuest": false,
     "preferences": {},
-    "createdAt": "2026-11-18T04:10:34.470Z"
+    "createdAt": "2026-11-18T05:25:22.738Z"
   }
 }

@@ -10,21 +10,22 @@ import jwt
 from app.core.errors import AppError
 
 
-def create_access_token(user_id: uuid.UUID, secret: str, ttl_seconds: int) -> tuple[str, int]:
+def create_access_token(user_id: uuid.UUID, secret: str, ttl_seconds: int, typ: str = "access") -> tuple[str, int]:
     now = int(time.time())
     exp = now + ttl_seconds
-    token = jwt.encode({"sub": str(user_id), "iat": now, "exp": exp, "typ": "access"}, secret, algorithm="HS256")
+    payload = {"sub": str(user_id), "iat": now, "exp": exp, "typ": typ, "jti": uuid.uuid4().hex}
+    token = jwt.encode(payload, secret, algorithm="HS256")
     return token, exp
 
 
-def decode_access_token(token: str, secret: str) -> uuid.UUID:
+def decode_access_token(token: str, secret: str, typ: str = "access") -> uuid.UUID:
     try:
         payload = jwt.decode(token, secret, algorithms=["HS256"], options={"require": ["exp", "sub"]})
     except jwt.ExpiredSignatureError as exc:
         raise AppError("AUTH_INVALID", "Session expired") from exc
     except jwt.PyJWTError as exc:
         raise AppError("AUTH_INVALID", "Invalid session token") from exc
-    if payload.get("typ") != "access":
+    if payload.get("typ") != typ:
         raise AppError("AUTH_INVALID", "Invalid session token")
     return uuid.UUID(payload["sub"])
 

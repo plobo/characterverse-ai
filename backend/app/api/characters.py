@@ -205,7 +205,7 @@ def preview_recipe(
 ) -> PreviewOut:
     """Assemble a preview GLB + thumbnail for an unsaved recipe (cached by recipe hash)."""
     recipe = normalized_recipe(validate_recipe(dump(body.recipe), container.catalog, container.settings.shared_dir))
-    return PreviewOut(**ensure_preview(container, session, recipe))
+    return PreviewOut(**ensure_preview(container, session, recipe, user.id))
 
 
 @router.get("/characters/{character_id}", response_model=CharacterOut)
@@ -293,4 +293,4 @@ def preview_character(
     c = get_owned(session, Character, character_id, user)
     if recipe_issues(c.recipe_json, container.catalog, container.settings.shared_dir):
         raise AppError("RECIPE_INVALID", "This character uses assets that are no longer available")
-    return PreviewOut(**ensure_preview(container, session, c.recipe_json))
+    return PreviewOut(**ensure_preview(container, session, c.recipe_json, user.id))
