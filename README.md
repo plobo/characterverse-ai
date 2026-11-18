@@ -45,7 +45,7 @@
 ```text
 apps/ios        SwiftUI app (Swift 6 strict concurrency, SceneKit preview, SwiftData drafts, Keychain)
 apps/android    Compose app (Hilt, Retrofit, Room, DataStore, Keystore, WorkManager, Media3)
-backend         FastAPI modular monolith, render worker, Alembic migrations, 153 tests
+backend         FastAPI modular monolith, render worker, Alembic migrations, 163 tests
 shared          OpenAPI, error codes, JSON schemas, asset manifests, design tokens, golden fixtures
 infrastructure  Dockerfiles (API, Blender worker), local env, deployment notes
 docs            Architecture, API contracts, licences, security & privacy, status, ADRs, screenshots
@@ -57,7 +57,7 @@ requirements    IMPLEMENTATION_PLAN.md (product spec)
 ```bash
 cd backend
 python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
-.venv/bin/pytest                                   # 153 tests incl. a real MP4 render
+.venv/bin/pytest                                   # 163 tests incl. a real MP4 render
 .venv/bin/python -m scripts.seed_demo --render     # demo account, characters, project, rendered video
 .venv/bin/uvicorn --factory app.main:app_factory --host 0.0.0.0 --port 8000   # docs at /docs
 ```
