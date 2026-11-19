@@ -94,3 +94,7 @@ Debug builds accept `-cvDevSignIn demo -cvScreen mixer` (iOS launch args) or `--
 [Architecture](docs/ARCHITECTURE.md) · [API contracts](docs/API_CONTRACTS.md) ·
 [Asset & model licences](docs/ASSET_AND_MODEL_LICENSES.md) · [Security & privacy](docs/SECURITY_AND_PRIVACY.md) ·
 [Implementation status](docs/IMPLEMENTATION_STATUS.md) · [ADRs](docs/ADR) · [Product spec](requirements/IMPLEMENTATION_PLAN.md)
+
+## License
+
+Code is released under the [MIT License](LICENSE). Bundled third-party tools keep their own licences — see [Asset & model licences](docs/ASSET_AND_MODEL_LICENSES.md) (FFmpeg is GPL and flagged for review).
